@@ -129,9 +129,9 @@ export default {
   name: "login",
   layout: "auth",
   mounted() {
-    this.$axios.$get("/players").then((res) => {
-      console.warn("players", res);
-    });
+    // this.$axios.$get("/players").then((res) => {
+    //   console.warn("players", res);
+    // });
   },
   data() {
     return {
