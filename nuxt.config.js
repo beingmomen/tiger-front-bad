@@ -130,7 +130,7 @@ export default {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
     // proxy: true,
     // baseURL: "http://127.0.0.1:1234/api/v1",
-    baseURL: "https://141.136.42.31:22/api/v1",
+    baseURL: "https://141.136.42.31:1579/api/v1",
   },
 
   proxy: {
@@ -168,6 +168,6 @@ export default {
   build: {},
   publicRuntimeConfig: {
     // NODE_URL_images: "http://127.0.0.1:1234/images",
-    NODE_URL_images: "https://141.136.42.31:22/images",
+    NODE_URL_images: "https://141.136.42.31:1579/images",
   },
 };
