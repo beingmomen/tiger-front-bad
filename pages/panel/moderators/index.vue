@@ -1,0 +1,48 @@
+<template>
+  <b-col cols="12">
+    <TablesTa title="moderators" :headers="headers" :module="module" />
+  </b-col>
+</template>
+
+<script>
+export default {
+  name: "moderators",
+  layout: "admin",
+  async asyncData({ $axios, store, $toast }) {
+    await $axios.$get(`/moderators`).then((res) => {
+      store.dispatch("panel/moderators/getAllDataFromApi", res);
+    });
+    return {};
+  },
+  data() {
+    return {
+      module: "panel/moderators",
+      headers: [
+        {
+          key: "avatar",
+          label: "Photo",
+          sortable: false,
+          formatter: (value, key, item) => {
+            let url = `${this.$config.NODE_URL_images}/moderators/${item.image}`;
+            return url;
+          },
+        },
+        { key: "name", label: "Name", sortable: true },
+        {
+          key: "startDate",
+          label: "Start Date",
+          sortable: true,
+          formatter: (value) => {
+            return this.$moment(value).format("YYYY-MM-DD");
+          },
+        },
+        "actions",
+      ],
+    };
+  },
+  components: {},
+};
+</script>
+
+<style lang="scss" scoped>
+</style>

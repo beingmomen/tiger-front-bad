@@ -1,0 +1,49 @@
+<template>
+  <b-col cols="12">
+    <TablesTa title="activity" :headers="headers" :module="module" />
+  </b-col>
+</template>
+
+<script>
+export default {
+  name: "activities",
+  layout: "admin",
+  async asyncData({ $axios, store, $toast }) {
+    await $axios.$get(`/activities`).then((res) => {
+      store.dispatch("panel/activities/getAllDataFromApi", res);
+    });
+    return {};
+  },
+  data() {
+    return {
+      module: "panel/activities",
+      headers: [
+        {
+          key: "avatar",
+          label: "Photo",
+          sortable: false,
+          formatter: (value, key, item) => {
+            let url = `${this.$config.NODE_URL_images}/activities/${item.image}`;
+            return url;
+          },
+        },
+        {
+          key: "cover",
+          label: "Cover",
+          sortable: false,
+          formatter: (value, key, item) => {
+            let url = `${this.$config.NODE_URL_images}/activities/${item.imageCover}`;
+            return url;
+          },
+        },
+        { key: "name", label: "Name", sortable: true },
+        "actions",
+      ],
+    };
+  },
+  components: {},
+};
+</script>
+
+<style lang="scss" scoped>
+</style>

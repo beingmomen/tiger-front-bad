@@ -1,0 +1,70 @@
+@import "@core/scss/vue/libs/vue-select.scss";
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.auth-wrapper {
+  .brand-logo {
+    // width: 185px;
+    width: 255px;
+    img {
+      width: 60px;
+    }
+  }
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+  color: #7367f0;
+  background-color: rgba(115, 103, 240, 0.12);
+}
+
+.text-end {
+  text-align: end !important;
+}
+.text-start {
+  text-align: start !important;
+}
+.h-35{
+  height: 35px;
+}
+
+.w-13 {
+  width: 50px;
+  .input-group-text {
+    width: 100%;
+  }
+}
+
+.w-87 {
+  width: calc(100% - 50px);
+}
+
+.custom-form {
+  .form-group {
+    height: 60px;
+    > label, .col-form-label {
+      height: 25px;
+      padding: 0;
+      margin-bottom: 2px;
+    }
+  }
+}
+
+.v-select {
+.vs__dropdown-toggle {
+    height: 100%;
+    border-inline-start: 0;
+    border-start-start-radius: 0;
+    border-end-start-radius: 0;
+}
+}
+.custom-form {
+
+  .custom-file-label,
+  .form-control {
+    border-inline-start: 0;
+  }
+}
+
