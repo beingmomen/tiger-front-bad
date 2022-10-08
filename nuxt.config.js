@@ -133,15 +133,16 @@ export default {
     baseURL: "https://141.136.42.31:15795/api/v1",
   },
 
-  proxy: {
-    "/api/": {
-      target: "http://127.0.0.1:1234/api/v1/api",
-      pathRewrite: { "^/api/": "" },
-    },
-    // proxy: true,
-    // credentials: true,
-    // prefix: '/api/',
-  },
+  proxy: {'http://141.136.42.31:15795/api/v1'},
+  // proxy: {
+  //   "/api/": {
+  //     target: "http://127.0.0.1:1234/api/v1/api",
+  //     pathRewrite: { "^/api/": "" },
+  //   },
+  //   // proxy: true,
+  //   // credentials: true,
+  //   // prefix: '/api/',
+  // },
 
   pwa: {
     icon: {
