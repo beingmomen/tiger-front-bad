@@ -30,7 +30,7 @@
 
 <script>
 export default {
-  name: "adminfonts",
+  name: "admin-fonts",
 };
 </script>
 

@@ -1,32 +1,36 @@
 <template>
-  <ActionsCreate title="championship" :module="module">
-    <template #create>
-      <FormInputIcon label="Name" storeKey="name" :module="module">
-        <template #icon>
-          <user-icon size="1.5x" class="custom-class"></user-icon>
-        </template>
-      </FormInputIcon>
+  <SettingsLayout title="championships" :breadcrumbs="breadcrumbs">
+    <template #content>
+      <ActionsCreate title="championship" :module="module">
+        <template #create>
+          <FormInputIcon label="Name" storeKey="name" :module="module">
+            <template #icon>
+              <user-icon size="1.5x" class="custom-class"></user-icon>
+            </template>
+          </FormInputIcon>
 
-      <FormDatePicker label="Date" storeKey="date" :module="module">
-        <template #icon>
-          <calendar-icon size="1.5x" class="custom-class"></calendar-icon>
-        </template>
-      </FormDatePicker>
+          <FormDatePicker label="Date" storeKey="date" :module="module">
+            <template #icon>
+              <calendar-icon size="1.5x" class="custom-class"></calendar-icon>
+            </template>
+          </FormDatePicker>
 
-      <FormSelect
-        label="Activity"
-        labelSelect="name"
-        storeKey="activity"
-        listKey="activitiesList"
-        global
-        :module="module"
-      >
-        <template #icon>
-          <activity-icon size="1.5x" class="custom-class"></activity-icon>
+          <FormSelect
+            label="Activity"
+            labelSelect="name"
+            storeKey="activity"
+            listKey="activitiesList"
+            global
+            :module="module"
+          >
+            <template #icon>
+              <activity-icon size="1.5x" class="custom-class"></activity-icon>
+            </template>
+          </FormSelect>
         </template>
-      </FormSelect>
+      </ActionsCreate>
     </template>
-  </ActionsCreate>
+  </SettingsLayout>
 </template>
 
 <script>
@@ -49,6 +53,18 @@ export default {
   data() {
     return {
       module: "panel/championships",
+      breadcrumbs: [
+        {
+          text: "championships",
+          active: false,
+          to: "/panel/championships",
+        },
+        {
+          text: "create",
+          active: true,
+          to: "/panel/championships/create",
+        },
+      ],
     };
   },
   methods: {},

@@ -13,12 +13,9 @@
       <nuxt-link
         @click.native="toggleLayoutCollapsed"
         to=""
-        class="nav-link modern-nav-toggle"
+        class="nav-link modern-nav-toggle text-secondary"
       >
-        <align-justify-icon
-          size="1.5x"
-          class="navbar-custome-calsss"
-        ></align-justify-icon>
+        <align-justify-icon size="1.5x" class=""></align-justify-icon>
       </nuxt-link>
 
       <ul class="navbar-nav nav align-items-center ml-auto">
@@ -42,7 +39,7 @@
                 width="22px"
                 alt="English"
               />
-              <span class="ml-50 text-body">{{
+              <span class="ms-2 text-body">{{
                 currentLang || lang | languageName
               }}</span>
             </template>
@@ -54,7 +51,13 @@
               "
             >
               <nuxt-link
-                class="lang-name d-flex align-items-center cursor-pointer"
+                class="
+                  lang-name
+                  d-flex
+                  align-items-center
+                  cursor-pointer
+                  text-secondary
+                "
                 to=""
               >
                 <b-img
@@ -62,6 +65,7 @@
                   height="20px"
                   width="32px"
                   alt=""
+                  class="me-1"
                 />
                 <p class="mb-0 ms-2 cursor-pointer">
                   {{ locale.code | languageName }}
@@ -76,13 +80,13 @@
               @click="toggleMode('dark')"
               v-if="dashboardMode"
               size="1.5x"
-              class="navbar-custome-calsss"
+              class=""
             ></moon-icon>
             <sun-icon
               @click="toggleMode('light')"
               v-else
               size="1.5x"
-              class="navbar-custome-calsss"
+              class=""
             ></sun-icon>
           </nuxt-link>
         </li>
@@ -108,11 +112,7 @@
                 class="badge-minimal"
                 badge-variant="success"
               >
-                <user-icon
-                  v-if="!url"
-                  size="1.5x"
-                  class="navbar-custome-calsss"
-                ></user-icon>
+                <user-icon v-if="!url" size="1.5x" class=""></user-icon>
               </b-avatar>
             </template>
 
@@ -120,10 +120,7 @@
               :to="{ name: '' }"
               link-class="d-flex align-items-center"
             >
-              <user-icon
-                size="1.5x"
-                class="navbar-custome-calsss mr-50"
-              ></user-icon>
+              <user-icon size="1.5x" class="ms-2"></user-icon>
               <span>{{ $t("navbar.profile") }}</span>
             </b-dropdown-item>
 
@@ -133,20 +130,14 @@
               :to="{ name: '' }"
               link-class="d-flex align-items-center"
             >
-              <settings-icon
-                size="1.5x"
-                class="navbar-custome-calsss mr-50"
-              ></settings-icon>
+              <settings-icon size="1.5x" class="ms-2"></settings-icon>
               <span>{{ $t("navbar.setting") }}</span>
             </b-dropdown-item>
             <b-dropdown-item
               link-class="d-flex align-items-center"
               @click="$auth.logout()"
             >
-              <log-out-icon
-                size="1.5x"
-                class="navbar-custome-calsss mr-50"
-              ></log-out-icon>
+              <log-out-icon size="1.5x" class="ms-2"></log-out-icon>
               <span>{{ $t("navbar.logout") }}</span>
             </b-dropdown-item></b-nav-item-dropdown
           >

@@ -9,8 +9,8 @@
     @mouseleave="hoverSidebar"
   >
     <div class="navbar-header expanded">
-      <ul class="nav navbar-nav flex-row">
-        <li class="nav-item mr-auto mb-3">
+      <ul class="nav navbar-nav flex-row justify-content-between">
+        <li class="nav-item mb-3">
           <nuxt-link
             :to="localePath('/panel')"
             class="navbar-brand router-link-active mt-0"
@@ -21,7 +21,7 @@
             <MainTitle />
           </nuxt-link>
         </li>
-        <li class="nav-item nav-toggle">
+        <li class="nav-item nav-toggle me-3">
           <nuxt-link
             @click.native="hideSidebar"
             to=""

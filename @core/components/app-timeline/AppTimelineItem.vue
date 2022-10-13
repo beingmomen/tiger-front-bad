@@ -8,7 +8,11 @@
     ]"
     v-on="$listeners"
   >
-    <div v-if="!icon" class="timeline-item-point" />
+    <div
+      v-if="!icon"
+      class="timeline-item-point"
+      :style="{ backgroundColor: variant }"
+    />
     <div
       v-else
       class="
@@ -74,11 +78,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "/@core/scss/base/bootstrap-extended/include"; // Bootstrap includes
-@import "~@core/scss/base/components/include"; // Components includes
+@import "~/@core/scss/base/bootstrap-extended/include"; // Bootstrap includes
+@import "~/@core/scss/base/components/include"; // Components includes
 
 // Color palettes
-@import "/@core/scss/base/core/colors/palette-variables.scss";
+@import "~/@core/scss/base/core/colors/palette-variables.scss";
 
 $timeline-border-color: $border-color;
 
@@ -155,6 +159,9 @@ $timeline-border-color: $border-color;
       left: -4px;
       bottom: 0;
       right: 0;
+      // padding: 0.1px;
+      // border: 1px solid rgb(184, 184, 184);
+      box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     }
   }
 

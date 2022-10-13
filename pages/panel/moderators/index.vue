@@ -1,7 +1,11 @@
 <template>
-  <b-col cols="12">
-    <TablesTa title="moderators" :headers="headers" :module="module" />
-  </b-col>
+  <SettingsLayout title="moderators" :breadcrumbs="breadcrumbs">
+    <template #content>
+      <b-col cols="12">
+        <TablesTa title="moderator" :headers="headers" :module="module" />
+      </b-col>
+    </template>
+  </SettingsLayout>
 </template>
 
 <script>
@@ -17,6 +21,13 @@ export default {
   data() {
     return {
       module: "panel/moderators",
+      breadcrumbs: [
+        {
+          text: "moderators",
+          active: true,
+          to: "/panel/moderators",
+        },
+      ],
       headers: [
         {
           key: "avatar",

@@ -1,33 +1,37 @@
 <template>
-  <ActionsUpdate title="belt" :module="module" :id="id">
-    <template #update>
-      <FormInputIcon label="Name" storeKey="name" :module="module">
-        <template #icon>
-          <user-icon size="1.5x" class="custom-class"></user-icon>
-        </template>
-      </FormInputIcon>
+  <SettingsLayout title="belts" :breadcrumbs="breadcrumbs">
+    <template #content>
+      <ActionsUpdate title="belt" :module="module" :id="id">
+        <template #update>
+          <FormInputIcon label="Name" storeKey="name" :module="module">
+            <template #icon>
+              <user-icon size="1.5x" class="custom-class"></user-icon>
+            </template>
+          </FormInputIcon>
 
-      <FormInputIcon label="Color" storeKey="color" :module="module">
-        <template #icon>
-          <user-icon size="1.5x" class="custom-class"></user-icon>
-        </template>
-      </FormInputIcon>
+          <FormInputIcon label="Color" storeKey="color" :module="module">
+            <template #icon>
+              <user-icon size="1.5x" class="custom-class"></user-icon>
+            </template>
+          </FormInputIcon>
 
-      <FormSelect
-        label="Activities"
-        labelSelect="name"
-        storeKey="activities"
-        listKey="activitiesList"
-        :multiple="true"
-        global
-        :module="module"
-      >
-        <template #icon>
-          <activity-icon size="1.5x" class="custom-class"></activity-icon>
+          <FormSelect
+            label="Activities"
+            labelSelect="name"
+            storeKey="activities"
+            listKey="activitiesList"
+            :multiple="true"
+            global
+            :module="module"
+          >
+            <template #icon>
+              <activity-icon size="1.5x" class="custom-class"></activity-icon>
+            </template>
+          </FormSelect>
         </template>
-      </FormSelect>
+      </ActionsUpdate>
     </template>
-  </ActionsUpdate>
+  </SettingsLayout>
 </template>
 
 <script>
@@ -66,6 +70,18 @@ export default {
   data() {
     return {
       module: "panel/belts",
+      breadcrumbs: [
+        {
+          text: "belts",
+          active: false,
+          to: "/panel/belts",
+        },
+        {
+          text: "update",
+          active: true,
+          to: "/panel/belts/:slug",
+        },
+      ],
     };
   },
 

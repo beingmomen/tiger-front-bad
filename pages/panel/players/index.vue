@@ -1,7 +1,11 @@
 <template>
-  <b-col cols="12">
-    <TablesTa title="players" :headers="headers" :module="module" />
-  </b-col>
+  <SettingsLayout title="players" :breadcrumbs="breadcrumbs">
+    <template #content>
+      <b-col cols="12">
+        <TablesTa title="player" :headers="headers" :module="module" />
+      </b-col>
+    </template>
+  </SettingsLayout>
 </template>
 
 <script>
@@ -17,6 +21,13 @@ export default {
   data() {
     return {
       module: "panel/players",
+      breadcrumbs: [
+        {
+          text: "players",
+          active: true,
+          to: "/panel/players",
+        },
+      ],
       headers: [
         {
           key: "avatar",
@@ -51,7 +62,6 @@ export default {
       ],
     };
   },
-  components: {},
 };
 </script>
 

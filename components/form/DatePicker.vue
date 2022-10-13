@@ -9,6 +9,7 @@
           <slot name="icon"></slot>
         </b-input-group-prepend>
         <b-form-input
+          :class="dashDir == 'rtl' ? 'text-end' : 'text-start'"
           style="height: 35px"
           id="example-input"
           v-model="getContent"

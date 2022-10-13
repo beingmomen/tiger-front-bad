@@ -5,12 +5,18 @@
       :label="label"
       label-for="vi-first-name"
     >
-      <b-input-group class="input-group-merge">
-        <b-input-group-prepend is-text>
+      <b-input-group
+        class="input-group-merge"
+        :class="
+          dashDir == 'rtl' ? 'form-input-icon-rtl' : 'form-input-icon-ltr'
+        "
+      >
+        <b-input-group-prepend class="prepend" is-text>
           <slot name="icon"></slot>
         </b-input-group-prepend>
         <b-form-input
           style="height: 35px"
+          class=""
           id="vi-first-name"
           :placeholder="label"
           v-model="getContent"

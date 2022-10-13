@@ -1,16 +1,16 @@
 <template>
   <b-row class="content-header">
     <!-- Content Left -->
-    <b-col class="content-header-left mb-2" cols="12" md="9">
+    <b-col class="content-header-left mb-2">
       <b-row class="breadcrumbs-top">
-        <b-col cols="12">
-          <h2 class="content-header-title float-left pr-1 mb-0 text-uppercase">
+        <b-col cols="12 d-flex ">
+          <h2 class="content-header-title pe-4 mb-0 text-uppercase">
             {{ title }}
           </h2>
           <div class="breadcrumb-wrapper">
             <b-breadcrumb>
               <b-breadcrumb-item to="/panel">
-                <slot name="header"></slot>
+                <home-icon size="1.5x" class="custom-class"></home-icon>
               </b-breadcrumb-item>
               <b-breadcrumb-item
                 v-for="item in breadcrumbs"
@@ -26,53 +26,18 @@
         </b-col>
       </b-row>
     </b-col>
-
-    <!-- Content Right -->
-    <!-- <b-col
-        class="content-header-right text-md-right d-md-block d-none mb-1"
-        md="3"
-        cols="12"
-      >
-        <b-dropdown variant="link" no-caret toggle-class="p-0" right>
-          <template #button-content>
-            <b-button
-              v-ripple.400="'rgba(255, 255, 255, 0.15)'"
-              variant="primary"
-              class="btn-icon"
-            >
-              <feather-icon icon="SettingsIcon" />
-            </b-button>
-          </template>
-
-          <b-dropdown-item :to="{ name: 'apps-todo' }">
-            <feather-icon icon="CheckSquareIcon" size="16" />
-            <span class="align-middle ml-50">Todo</span>
-          </b-dropdown-item>
-
-          <b-dropdown-item :to="{ name: 'apps-chat' }">
-            <feather-icon icon="MessageSquareIcon" size="16" />
-            <span class="align-middle ml-50">Chat</span>
-          </b-dropdown-item>
-
-          <b-dropdown-item :to="{ name: 'apps-email' }">
-            <feather-icon icon="MailIcon" size="16" />
-            <span class="align-middle ml-50">Email</span>
-          </b-dropdown-item>
-
-          <b-dropdown-item :to="{ name: 'apps-calendar' }">
-            <feather-icon icon="CalendarIcon" size="16" />
-            <span class="align-middle ml-50">Calendar</span>
-          </b-dropdown-item>
-        </b-dropdown>
-      </b-col> -->
   </b-row>
 </template>
 
 <script>
+import { HomeIcon } from "vue-feather-icons";
 export default {
   props: {
     title: String,
     breadcrumbs: Array,
+  },
+  components: {
+    HomeIcon,
   },
 };
 </script>
@@ -80,6 +45,7 @@ export default {
 <style lang="scss" scoped>
 .content-header-title {
   border-inline-end: 1px solid #d6dce1;
+  border-inline-start: none !important;
 }
 
 .breadcrumb-item-c {

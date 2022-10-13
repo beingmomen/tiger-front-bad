@@ -1,13 +1,17 @@
 <template>
-  <b-col cols="12">
-    <TablesTa
-      title="user"
-      :headers="headers"
-      :module="module"
-      :create="false"
-      :update="false"
-    />
-  </b-col>
+  <SettingsLayout title="users" :breadcrumbs="breadcrumbs">
+    <template #content>
+      <b-col cols="12">
+        <TablesTa
+          title="user"
+          :headers="headers"
+          :module="module"
+          :create="false"
+          :update="false"
+        />
+      </b-col>
+    </template>
+  </SettingsLayout>
 </template>
 
 <script>
@@ -23,6 +27,13 @@ export default {
   data() {
     return {
       module: "panel/users",
+      breadcrumbs: [
+        {
+          text: "users",
+          active: true,
+          to: "/panel/users",
+        },
+      ],
       headers: [
         {
           key: "avatar",

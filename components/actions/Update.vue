@@ -1,5 +1,5 @@
 <template>
-  <b-card-code class="text-capitalize" :title="`Create New ` + title">
+  <b-card-code class="text-capitalize" :title="`Update ` + title">
     <b-form class="vh-50" @submit.prevent="updateDataInDB">
       <b-row>
         <slot name="update"></slot>

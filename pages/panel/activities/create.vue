@@ -1,41 +1,35 @@
 <template>
-  <b-card-code title="Create New User">
-    <b-form class="vh-50" @submit.prevent="addDataToDB">
-      <b-row>
-        <FormInputIcon
-          label="Name"
-          storeKey="name"
-          :module="module"
-          lg="12"
-          md="12"
-        >
-          <template #icon>
-            <user-icon size="1.5x" class="custom-class"></user-icon>
-          </template>
-        </FormInputIcon>
+  <SettingsLayout title="activities" :breadcrumbs="breadcrumbs">
+    <template #content>
+      <ActionsCreate title="activity" :module="module">
+        <template #create>
+          <FormInputIcon
+            label="Name"
+            storeKey="name"
+            :module="module"
+            lg="12"
+            md="12"
+          >
+            <template #icon>
+              <user-icon size="1.5x" class="custom-class"></user-icon>
+            </template>
+          </FormInputIcon>
 
-        <FormFile label="Image" storeKey="image" :module="module">
-          <template #icon>
-            <mail-icon size="1.5x" class="custom-class"></mail-icon>
-          </template>
-        </FormFile>
+          <FormFile label="Image" storeKey="image" :module="module">
+            <template #icon>
+              <mail-icon size="1.5x" class="custom-class"></mail-icon>
+            </template>
+          </FormFile>
 
-        <FormFile label="Image Cover" storeKey="imageCover" :module="module">
-          <template #icon>
-            <mail-icon size="1.5x" class="custom-class"></mail-icon>
-          </template>
-        </FormFile>
-
-        <!-- reset and submit -->
-        <b-col cols="12" class="text-end">
-          <b-button type="reset" variant="outline-secondary"> Reset </b-button>
-          <b-button type="submit" variant="primary" class="mr-1">
-            Create
-          </b-button>
-        </b-col>
-      </b-row>
-    </b-form>
-  </b-card-code>
+          <FormFile label="Image Cover" storeKey="imageCover" :module="module">
+            <template #icon>
+              <mail-icon size="1.5x" class="custom-class"></mail-icon>
+            </template>
+          </FormFile>
+        </template>
+      </ActionsCreate>
+    </template>
+  </SettingsLayout>
 </template>
 
 <script>
@@ -50,6 +44,18 @@ export default {
   data() {
     return {
       module: "panel/activities",
+      breadcrumbs: [
+        {
+          text: "activities",
+          active: false,
+          to: "/panel/activities",
+        },
+        {
+          text: "create",
+          active: true,
+          to: "/panel/activities/create",
+        },
+      ],
     };
   },
   methods: {

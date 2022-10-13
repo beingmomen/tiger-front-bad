@@ -1,7 +1,11 @@
 <template>
-  <b-col cols="12">
-    <TablesTa title="belt" :headers="headers" :module="module" />
-  </b-col>
+  <SettingsLayout title="belts" :breadcrumbs="breadcrumbs">
+    <template #content>
+      <b-col cols="12">
+        <TablesTa title="belt" :headers="headers" :module="module" />
+      </b-col>
+    </template>
+  </SettingsLayout>
 </template>
 
 <script>
@@ -17,9 +21,26 @@ export default {
   data() {
     return {
       module: "panel/belts",
+      breadcrumbs: [
+        {
+          text: "belts",
+          active: true,
+          to: "/panel/belts",
+        },
+      ],
       headers: [
         { key: "name", label: "Name", sortable: true },
         { key: "color", label: "Color", sortable: true },
+        {
+          key: "activities",
+          label: "Activity",
+          sortable: false,
+          formatter: (value, key, item) => {
+            let data = [];
+            value.forEach((el) => data.push(el.name));
+            return data;
+          },
+        },
         "actions",
       ],
     };

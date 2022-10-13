@@ -75,6 +75,8 @@
     height: $navbar-height;
     position: relative;
     padding: 0.35rem 1rem 0.3rem 1.64rem;
+    padding-inline-start: 1rem;
+    padding-inline-end: 0;
     transition: 300ms ease all, background 0s;
     .navbar-brand {
       display: flex;
@@ -86,7 +88,7 @@
       }
       .brand-text {
         color: $primary;
-        padding-left: 1rem;
+        padding-inline-start: 1rem;
         margin-bottom: 0;
         font-weight: 600;
         letter-spacing: 0.01rem;

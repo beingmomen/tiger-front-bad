@@ -1,52 +1,46 @@
 <template>
-  <b-card-code title="Update User">
-    <b-form class="vh-50" @submit.prevent="updateDataInDB">
-      <b-row>
-        <FormInputIcon
-          label="Name"
-          storeKey="name"
-          :module="module"
-          lg="12"
-          md="12"
-        >
-          <template #icon>
-            <user-icon size="1.5x" class="custom-class"></user-icon>
-          </template>
-        </FormInputIcon>
+  <SettingsLayout title="activities" :breadcrumbs="breadcrumbs">
+    <template #content>
+      <ActionsUpdate title="activity" :module="module" :id="id">
+        <template #update>
+          <FormInputIcon
+            label="Name"
+            storeKey="name"
+            :module="module"
+            lg="12"
+            md="12"
+          >
+            <template #icon>
+              <user-icon size="1.5x" class="custom-class"></user-icon>
+            </template>
+          </FormInputIcon>
 
-        <FormFile label="Image" storeKey="image" :module="module">
-          <template #icon>
-            <mail-icon size="1.5x" class="custom-class"></mail-icon>
-          </template>
-        </FormFile>
+          <FormFile label="Image" storeKey="image" :module="module">
+            <template #icon>
+              <mail-icon size="1.5x" class="custom-class"></mail-icon>
+            </template>
+          </FormFile>
 
-        <FormFile label="Image Cover" storeKey="imageCover" :module="module">
-          <template #icon>
-            <mail-icon size="1.5x" class="custom-class"></mail-icon>
-          </template>
-        </FormFile>
+          <FormFile label="Image Cover" storeKey="imageCover" :module="module">
+            <template #icon>
+              <mail-icon size="1.5x" class="custom-class"></mail-icon>
+            </template>
+          </FormFile>
 
-        <CardsPreviewImage
-          :module="module"
-          storeKey="PreviewImage"
-          path="activities"
-        />
-        <CardsPreviewImage
-          :module="module"
-          storeKey="PreviewImageCover"
-          path="activities"
-        />
-
-        <!-- reset and submit -->
-        <b-col cols="12" class="text-end">
-          <b-button type="reset" variant="outline-secondary"> Reset </b-button>
-          <b-button type="submit" variant="primary" class="mr-1">
-            Update
-          </b-button>
-        </b-col>
-      </b-row>
-    </b-form>
-  </b-card-code>
+          <CardsPreviewImage
+            :module="module"
+            storeKey="PreviewImage"
+            path="activities"
+          />
+          <CardsPreviewImage
+            :module="module"
+            storeKey="PreviewImageCover"
+            path="activities"
+          />
+        </template>
+      </ActionsUpdate>
+    </template>
+  </SettingsLayout>
 </template>
 
 <script>
@@ -68,6 +62,18 @@ export default {
   data() {
     return {
       module: "panel/activities",
+      breadcrumbs: [
+        {
+          text: "activities",
+          active: false,
+          to: "/panel/activities",
+        },
+        {
+          text: "update",
+          active: true,
+          to: "/panel/activities/:slug",
+        },
+      ],
     };
   },
   methods: {

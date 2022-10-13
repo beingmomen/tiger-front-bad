@@ -1,8 +1,17 @@
 <template>
   <b-col :lg="lg" :md="md" :sm="sm" class="mb-1 custom-form">
-    <b-form-group :label-class="{ 'label-required': required }" :label="label">
-      <b-input-group class="input-group-merge">
-        <b-input-group-prepend is-text class="h-35 w-13">
+    <b-form-group
+      class="mt-1"
+      :label-class="{ 'label-required': required }"
+      :label="label"
+    >
+      <b-input-group
+        class="input-group-merge"
+        :class="
+          dashDir == 'rtl' ? 'form-input-icon-rtl' : 'form-input-icon-ltr'
+        "
+      >
+        <b-input-group-prepend is-text class="h-35 w-13 date-prepend">
           <slot name="icon"></slot>
         </b-input-group-prepend>
         <v-select
@@ -16,7 +25,7 @@
           :options="listKey ? getAutoList : allData"
           :disabled="disabled"
           :placeholder="placeHolder"
-          @input="$emit('changeData')"
+          @input="changeData"
         ></v-select>
       </b-input-group>
     </b-form-group>
@@ -47,6 +56,10 @@ export default {
       default: false,
     },
     global: {
+      type: Boolean,
+      default: false,
+    },
+    change: {
       type: Boolean,
       default: false,
     },
@@ -99,6 +112,13 @@ export default {
         return this.$store.getters[`global/${this.listKey}`];
       } else {
         return this.$store.getters[`${this.module}/${this.listKey}`];
+      }
+    },
+  },
+  methods: {
+    changeData() {
+      if (this.change) {
+        this.$store.dispatch(`${this.module}/${this.storeKey}Change`);
       }
     },
   },

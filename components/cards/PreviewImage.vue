@@ -1,8 +1,9 @@
 <template>
-  <b-col :lg="lg" :md="md" :sm="sm">
-    <b-card-code class="border border-3" style="height: 400px">
+  <b-col :lg="lg" :md="md" :sm="sm" class="text-center">
+    <!-- <b-card-code class="border border-3" style="height: 400px">
       <b-img-lazy :src="url" fluid class="w-100 h-100 preview" />
-    </b-card-code>
+    </b-card-code> -->
+    <b-avatar class="p-0" size="120px" :src="url" />
   </b-col>
 </template>
 
@@ -27,7 +28,15 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      mainProps: {
+        blank: true,
+        blankColor: "#777",
+        width: 75,
+        height: 75,
+        class: "m1",
+      },
+    };
   },
   computed: {
     url() {

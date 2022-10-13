@@ -24,55 +24,33 @@
       <div class="app-content content">
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
-        <div class="content-wrapper">
-          <CardsBreadcrumb :title="title" :breadcrumbs="breadcrumbs">
-            <template v-slot:header>
-              <home-icon size="1.5x" class="custom-class"></home-icon>
-            </template>
-          </CardsBreadcrumb>
-          <div class="content-body">
-            <b-row>
-              <nuxt />
-            </b-row>
-          </div>
-        </div>
+        <Nuxt />
       </div>
       <!-- <SettingsFooter /> -->
     </div>
-    <div v-show="!loading" class="flower-spinner">
-      <div class="dots-container">
-        <div class="bigger-dot">
-          <div class="smaller-dot"></div>
-        </div>
-      </div>
+    <div
+      v-show="!loading"
+      class="card align-items-center justify-content-center"
+      style="height: calc(100vh)"
+    >
+      <lottie-player
+        src="https://assets9.lottiefiles.com/packages/lf20_x62chJ.json"
+        class="lottie-container"
+        background="transparent"
+        speed="1"
+        style="width: 500px; height: 500px"
+        loop
+        autoplay
+      ></lottie-player>
     </div>
   </div>
 </template>
 
 <script>
-import { HomeIcon } from "vue-feather-icons";
 export default {
   name: "admin",
   middleware: ["mode", "lang", "authentication"],
   mounted() {
-    let data = [];
-    let filter = this.$route.path
-      .split("/")
-      .filter((el) => el !== "" && el !== "panel");
-
-    filter.forEach((x, i) => {
-      data.push({
-        text: x,
-        active: filter.length - 1 === i ? true : false,
-      });
-    });
-    this.breadcrumbs = data;
-    if (data.length) {
-      this.title = data[0].text;
-    } else {
-      this.title = "panel";
-    }
-
     document.addEventListener("click", (e) => {
       if (e.target.classList.contains("menu-open")) {
         this.$store.dispatch("hideSidebar");
@@ -87,8 +65,6 @@ export default {
   },
   data() {
     return {
-      breadcrumbs: [],
-      title: "",
       window: {
         width: 0,
         height: 0,
@@ -100,30 +76,6 @@ export default {
     handleResize() {
       this.window.width = window.innerWidth;
       this.window.height = window.innerHeight;
-    },
-  },
-  components: {
-    HomeIcon,
-  },
-  watch: {
-    $route(newValue, oldValue) {
-      let data = [];
-      let filter = newValue.path
-        .split("/")
-        .filter((el) => el !== "" && el !== "panel");
-
-      filter.forEach((x, i) => {
-        data.push({
-          text: x,
-          active: filter.length - 1 === i ? true : false,
-        });
-      });
-      this.breadcrumbs = data;
-      if (data.length) {
-        this.title = data[0].text;
-      } else {
-        this.title = "panel";
-      }
     },
   },
 };

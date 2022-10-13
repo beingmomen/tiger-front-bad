@@ -1,7 +1,11 @@
 <template>
-  <b-col cols="12">
-    <TablesTa title="activity" :headers="headers" :module="module" />
-  </b-col>
+  <SettingsLayout title="activities" :breadcrumbs="breadcrumbs">
+    <template #content>
+      <b-col cols="12">
+        <TablesTa title="activity" :headers="headers" :module="module" />
+      </b-col>
+    </template>
+  </SettingsLayout>
 </template>
 
 <script>
@@ -14,9 +18,17 @@ export default {
     });
     return {};
   },
+  props: ["test"],
   data() {
     return {
       module: "panel/activities",
+      breadcrumbs: [
+        {
+          text: "activities",
+          active: true,
+          to: "/panel/activities",
+        },
+      ],
       headers: [
         {
           key: "avatar",
@@ -41,7 +53,6 @@ export default {
       ],
     };
   },
-  components: {},
 };
 </script>
 

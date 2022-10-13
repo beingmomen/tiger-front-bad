@@ -56,8 +56,10 @@ export const actions = {
         },
       })
       .then((res) => {
-        commit("setAllData", res.data.data);
-        commit("setTotalItems", res.total);
+        if (res.data.data.length) {
+          commit("setAllData", res.data.data);
+          commit("setTotalItems", res.total);
+        }
       });
   },
 
