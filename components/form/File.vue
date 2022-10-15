@@ -1,10 +1,7 @@
 <template>
   <b-col :lg="lg" :md="md" :sm="sm" class="mb-1 custom-form">
-    <b-form-group
-      class="mt-1"
-      :label-class="{ 'label-required': required }"
-      :label="label"
-    >
+    <!-- class="mt-1" -->
+    <b-form-group :label-class="{ 'label-required': required }" :label="label">
       <b-input-group
         class="input-group-merge"
         :class="
@@ -18,7 +15,7 @@
           class="file-rtl"
           style="height: 35px"
           v-model="getContent"
-          placeholder="Choose a file or drop it here..."
+          :placeholder="$t('inputs.filePlaceholder')"
           drop-placeholder="Drop file here..."
           :disabled="disabled"
         />

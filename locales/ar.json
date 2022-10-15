@@ -41,12 +41,14 @@
       "password": "كلمة المرور",
       "forget": "هل نسيت كلمة المرور ؟",
       "search": "بحث",
+      "searchPlaceholder": "قم بالبحث",
       "all": "الكل",
       "name": "الإسم",
       "address": "العنوان",
       "phone": "الهاتف",
       "status": "الحالة",
       "message": "رسالة التحديث",
+      "filePlaceholder": "قم بإختيار الملف من هنا ...",
       "time": "الوقت"
   },
   "modals": {
@@ -62,6 +64,11 @@
       "search": "بحث",
       "delete": "حذف",
       "yes": "نعم",
+      "create": "إنشاء",
+      "reset": "إعادة تهيئة",
+      "update": "تعديل",
+      "confirm": "تأكيد",
+      "addBelt": "إضافة حزام",
       "no": "لا"
   },
   "tables": {
@@ -85,6 +92,9 @@
       "welcome_msg": "هذا التاجر ما زال غير مفعل.",
       "unregistered": "غير مسجل",
       "active": "مفعل",
+      "create": "إنشاء",
+      "update": "تعديل",
+      "beltsTimeLine": "لوحة اللأحزمة",
       "dis_active": "غير مفعل"
   }
 }

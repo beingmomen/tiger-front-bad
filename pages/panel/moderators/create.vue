@@ -1,5 +1,5 @@
 <template>
-  <SettingsLayout title="moderators" :breadcrumbs="breadcrumbs">
+  <SettingsLayout :title="$t('sidebar.moderators')" :breadcrumbs="breadcrumbs">
     <template #content>
       <ActionsCreate title="moderator" :module="module">
         <template #create>
@@ -74,14 +74,14 @@ export default {
       module: "panel/moderators",
       breadcrumbs: [
         {
-          text: "moderators",
+          text: this.$t("sidebar.moderators"),
           active: false,
-          to: "/panel/moderators",
+          to: this.localePath("/panel/moderators"),
         },
         {
-          text: "create",
+          text: this.$t("cards.create"),
           active: true,
-          to: "/panel/moderators/create",
+          to: this.localePath("/panel/moderators/create"),
         },
       ],
     };

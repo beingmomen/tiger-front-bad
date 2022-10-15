@@ -9,7 +9,7 @@
           </h2>
           <div class="breadcrumb-wrapper">
             <b-breadcrumb>
-              <b-breadcrumb-item to="/panel">
+              <b-breadcrumb-item :to="localePath('/panel')">
                 <home-icon size="1.5x" class="custom-class"></home-icon>
               </b-breadcrumb-item>
               <b-breadcrumb-item

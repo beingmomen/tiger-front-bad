@@ -38,7 +38,7 @@
                 id="filterInput"
                 v-model="filter"
                 type="search"
-                placeholder="Type to Search"
+                :placeholder="$t('inputs.searchPlaceholder')"
                 @input="change"
               />
               <b-input-group-append>
@@ -47,7 +47,7 @@
                   :disabled="!filter"
                   @click="searchData()"
                 >
-                  Search
+                  {{ $t("buttons.search") }}
                 </b-button>
               </b-input-group-append>
             </b-input-group>
@@ -58,7 +58,9 @@
             class="ms-4"
             variant="primary"
           >
-            <span class="text-nowrap text-capitalize">add {{ title }}</span>
+            <span class="text-nowrap text-capitalize"
+              >{{ $t("buttons.add") }} {{ title }}</span
+            >
           </b-button>
         </div>
       </b-card-body>
@@ -158,7 +160,9 @@
         class="ms-4"
         variant="primary"
       >
-        <span class="text-nowrap text-capitalize">add {{ title }}</span>
+        <span class="text-nowrap text-capitalize"
+          >{{ $t("buttons.add") }} {{ title }}</span
+        >
       </b-button>
     </div>
   </b-card-code>

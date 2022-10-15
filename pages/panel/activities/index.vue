@@ -1,5 +1,5 @@
 <template>
-  <SettingsLayout title="activities" :breadcrumbs="breadcrumbs">
+  <SettingsLayout :title="$t('sidebar.activities')" :breadcrumbs="breadcrumbs">
     <template #content>
       <b-col cols="12">
         <TablesTa title="activity" :headers="headers" :module="module" />
@@ -24,9 +24,9 @@ export default {
       module: "panel/activities",
       breadcrumbs: [
         {
-          text: "activities",
+          text: this.$t("sidebar.activities"),
           active: true,
-          to: "/panel/activities",
+          to: this.localePath("/panel/activities"),
         },
       ],
       headers: [

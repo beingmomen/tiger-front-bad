@@ -1,17 +1,31 @@
 <template>
-  <b-card-code class="border border-2" title="Repeating Forms">
+  <b-card-code
+    class="border border-2 position-relative mt-2"
+    :title="$t('sidebar.belts')"
+  >
+    <plus-square-icon
+      @click="repeat"
+      size="1.5x"
+      class="custom-class plus-row position-absolute text-primary fs-3"
+      :class="dashDir == 'rtl' ? 'plus-row-rtl' : 'plus-row-ltr'"
+    ></plus-square-icon>
+
     <div>
       <b-form ref="form" class="repeater-form">
         <!-- Row Loop -->
         <b-row v-for="(b, index) in belts" :key="index" ref="row">
           <b-col lg="6" md="6" sm="12" class="mb-1 custom-form">
             <b-form-group label="Belt Name">
-              <b-input-group class="input-group-merge">
-                <b-input-group-prepend is-text class="h-35 w-13">
-                  <activity-icon
-                    size="1.5x"
-                    class="custom-class"
-                  ></activity-icon>
+              <b-input-group
+                class="input-group-merge"
+                :class="
+                  dashDir == 'rtl'
+                    ? 'form-input-icon-rtl'
+                    : 'form-input-icon-ltr'
+                "
+              >
+                <b-input-group-prepend is-text class="h-35 w-13 select-prepend">
+                  <font-awesome-icon icon="fa-solid fa-bacon" class="fa-xl" />
                 </b-input-group-prepend>
                 <v-select
                   class="h-35 w-87"
@@ -26,14 +40,21 @@
             </b-form-group>
           </b-col>
 
-          <b-col :lg="4" md="3" sm="12" class="mb-1 custom-form">
+          <b-col :lg="5" md="5" sm="11" class="mb-1 custom-form">
             <b-form-group label="Belt Date" label-for="vi-first-name">
               <b-input-group
                 class="input-group-merge"
-                :class="{ 'flex-row-reverse': dashDir == 'rtl' }"
+                :class="
+                  dashDir == 'rtl'
+                    ? 'form-input-icon-rtl'
+                    : 'form-input-icon-ltr'
+                "
               >
-                <b-input-group-prepend is-text>
-                  <slot name="icon"></slot>
+                <b-input-group-prepend is-text style="height: 35px">
+                  <calendar-icon
+                    size="1.5x"
+                    class="custom-class"
+                  ></calendar-icon>
                 </b-input-group-prepend>
                 <b-form-input
                   style="height: 35px"
@@ -46,6 +67,7 @@
                 />
                 <b-input-group-append style="height: 35px">
                   <b-form-datepicker
+                    class="date-pick-btn"
                     v-model="b.date"
                     show-decade-nav
                     button-only
@@ -59,8 +81,13 @@
             </b-form-group>
           </b-col>
           <!-- Remove Button -->
-          <b-col lg="2" md="3" class="mb-50 text-end">
-            <b-button
+          <b-col
+            lg="1"
+            md="1"
+            sm="1"
+            class="mb-50 d-flex justify-content-center align-items-center"
+          >
+            <!-- <b-button
               variant="outline-danger"
               class="mt-0 mt-md-2 d-flex align-items-center"
               @click="removeItem(index)"
@@ -68,7 +95,12 @@
               <x-icon size="1.5x" class="custom-class"></x-icon>
 
               <span>Delete</span>
-            </b-button>
+            </b-button> -->
+            <trash-icon
+              @click="removeItem(index)"
+              size="1.5x"
+              class="custom-class text-danger cursor-pointer"
+            ></trash-icon>
           </b-col>
           <b-col cols="12">
             <hr />
@@ -77,21 +109,21 @@
       </b-form>
     </div>
     <div class="d-flex justify-content-between">
-      <b-button
+      <!-- <b-button
         class="d-flex align-items-center"
         variant="primary"
         @click="repeat"
       >
-        <plus-icon size="1.5x" class="custom-class"></plus-icon>
-        <span>Add New</span>
-      </b-button>
+        <plus-icon size="1.5x" class="custom-class me-1"></plus-icon>
+        <span>{{ $t("buttons.addBelt") }}</span>
+      </b-button> -->
       <b-button
         class="d-flex align-items-center"
         variant="success"
         @click="confirm(belts)"
       >
-        <check-icon size="1.5x" class="custom-class"></check-icon>
-        <span style="">Confirm</span>
+        <check-icon size="1.5x" class="custom-class me-1"></check-icon>
+        <span style="">{{ $t("buttons.confirm") }}</span>
       </b-button>
     </div>
   </b-card-code>
@@ -104,6 +136,8 @@ import {
   XIcon,
   PlusIcon,
   CheckIcon,
+  TrashIcon,
+  PlusSquareIcon,
 } from "vue-feather-icons";
 import BCardCode from "~/@core/components/b-card-code/BCardCode.vue";
 export default {
@@ -128,7 +162,9 @@ export default {
       this.belts = [...this.belts, { belt: null, date: null }];
     },
     removeItem(index) {
-      this.belts.splice(index, 1);
+      if (this.belts.length > 1) {
+        this.belts.splice(index, 1);
+      }
     },
     onContext() {},
   },
@@ -139,6 +175,8 @@ export default {
     BCardCode,
     PlusIcon,
     CheckIcon,
+    TrashIcon,
+    PlusSquareIcon,
   },
 };
 </script>

@@ -237,7 +237,7 @@
           }
         }
 
-        .date-prepend {
+        .select-prepend {
           .input-group-text {
             border-right: 1px solid #d8d6de;
             border-left: none;
@@ -245,7 +245,46 @@
             border-bottom-right-radius: 4px !important ;
           }
         }
+
+        .date-pick-btn {
+          .btn.dropdown-toggle-no-caret {
+            border-top-left-radius: 4px !important;
+            border-bottom-left-radius: 4px !important;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+          }
+        }
       }
+
+      .app-timeline {
+        margin-right: 1rem;
+        .timeline-item {
+          padding-right: 2.5rem;
+          padding-left: 0;
+          border-right: 1px solid #ebe9f1;
+          border-left: none;
+          .timeline-item-point {
+            right: -6px;
+            &::before {
+              left: 0;
+              right: -4px;
+            }
+          }
+          .media-aside {
+            margin-right: 0;
+          }
+        }
+      }
+
+      .dark-layout {
+        .app-timeline {
+          .timeline-item {
+            border-right-color: #3b4253;
+          }
+        }
+      }
+
+
     // Important
 
 

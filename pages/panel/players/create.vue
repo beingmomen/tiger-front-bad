@@ -1,5 +1,5 @@
 <template>
-  <SettingsLayout title="players" :breadcrumbs="breadcrumbs">
+  <SettingsLayout :title="$t('sidebar.players')" :breadcrumbs="breadcrumbs">
     <template #content>
       <ActionsCreate title="player" :module="module">
         <template #create>
@@ -19,6 +19,18 @@
             </template>
           </FormDatePicker>
 
+          <FormFile
+            lg="12"
+            md="12"
+            label="Image"
+            storeKey="image"
+            :module="module"
+          >
+            <template #icon>
+              <image-icon size="1.5x" class="custom-class"></image-icon>
+            </template>
+          </FormFile>
+
           <FormDatePicker label="Birth Day" storeKey="birth" :module="module">
             <template #icon>
               <calendar-icon size="1.5x" class="custom-class"></calendar-icon>
@@ -31,7 +43,7 @@
             :module="module"
           >
             <template #icon>
-              <user-icon size="1.5x" class="custom-class"></user-icon>
+              <font-awesome-icon icon="fa-solid fa-id-card" class="fa-xl" />
             </template>
           </FormInputIcon>
 
@@ -59,7 +71,7 @@
             :module="module"
           >
             <template #icon>
-              <activity-icon size="1.5x" class="custom-class"></activity-icon>
+              <font-awesome-icon icon="fa-solid fa-trophy" class="fa-xl" />
             </template>
           </FormSelect>
 
@@ -72,7 +84,7 @@
             :module="module"
           >
             <template #icon>
-              <activity-icon size="1.5x" class="custom-class"></activity-icon>
+              <font-awesome-icon icon="fa-solid fa-bacon" class="fa-xl" />
             </template>
           </FormSelect>
 
@@ -85,18 +97,6 @@
               <calendar-icon size="1.5x" class="custom-class"></calendar-icon>
             </template>
           </FormDatePicker>
-
-          <FormFile
-            lg="12"
-            md="12"
-            label="Image"
-            storeKey="image"
-            :module="module"
-          >
-            <template #icon>
-              <image-icon size="1.5x" class="custom-class"></image-icon>
-            </template>
-          </FormFile>
 
           <PanelPlayersCreateFormRepeator :module="module" />
         </template>
@@ -153,14 +153,14 @@ export default {
       module: "panel/players",
       breadcrumbs: [
         {
-          text: "players",
+          text: this.$t("sidebar.players"),
           active: false,
-          to: "/panel/players",
+          to: this.localePath("/panel/players"),
         },
         {
-          text: "create",
+          text: this.$t("cards.create"),
           active: true,
-          to: "/panel/players/create",
+          to: this.localePath("/panel/players/create"),
         },
       ],
     };

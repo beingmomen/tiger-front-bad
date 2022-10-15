@@ -1,6 +1,12 @@
 <template>
-  <b-col lg="6" md="6">
-    <b-card-code class="border border-2" title="Belts">
+  <b-col lg="6" md="6" class="position-relative">
+    <edit-icon
+      @click="$emit('showRepeator')"
+      size="1.5x"
+      class="custom-class position-absolute"
+      :class="dashDir == 'rtl' ? 'edit-time-line-rtl' : 'edit-time-line-ltr'"
+    ></edit-icon>
+    <b-card-code class="border border-2" :title="$t('cards.beltsTimeLine')">
       <app-timeline>
         <app-timeline-item
           v-for="(b, index) in getBelts"
@@ -48,11 +54,16 @@
 <script>
 import AppTimeline from "~/@core/components/app-timeline/AppTimeline.vue";
 import AppTimelineItem from "~/@core/components/app-timeline/AppTimelineItem.vue";
-import { TrashIcon } from "vue-feather-icons";
+import { TrashIcon, EditIcon } from "vue-feather-icons";
 import BCardCode from "~/@core/components/b-card-code/BCardCode.vue";
 export default {
   props: {
     module: String,
+  },
+  data() {
+    return {
+      updateTimeLine: false,
+    };
   },
   computed: {
     getBelts() {
@@ -91,6 +102,7 @@ export default {
     AppTimelineItem,
     TrashIcon,
     BCardCode,
+    EditIcon,
   },
 };
 </script>

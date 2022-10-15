@@ -73,27 +73,19 @@
           route="/panel/championships"
         >
           <template #icon>
-            <img
-              style="width: 20px; height: 20px; margin-inline-end: 15.4px"
-              :src="require('@/assets/images/icons/player.png')"
-              alt=""
-            />
+            <font-awesome-icon icon="fa-solid fa-trophy" class="fa-xl" />
           </template>
         </MainSidebarLink>
         <MainSidebarLink :name="$t(`sidebar.belts`)" route="/panel/belts">
           <template #icon>
-            <img
-              style="width: 20px; height: 20px; margin-inline-end: 15.4px"
-              :src="require('@/assets/images/icons/player.png')"
-              alt=""
-            />
+            <font-awesome-icon icon="fa-solid fa-bacon" class="fa-xl" />
           </template>
         </MainSidebarLink>
         <MainSidebarLink :name="$t(`sidebar.players`)" route="/panel/players">
           <template #icon>
             <img
-              style="width: 20px; height: 20px; margin-inline-end: 15.4px"
-              :src="require('@/assets/images/icons/player.png')"
+              style="width: 21px; height: 21px; margin-inline-end: 15.4px"
+              :src="require('@/assets/images/icons/karate.svg')"
               alt=""
             />
           </template>

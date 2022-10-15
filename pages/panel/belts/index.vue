@@ -1,5 +1,5 @@
 <template>
-  <SettingsLayout title="belts" :breadcrumbs="breadcrumbs">
+  <SettingsLayout :title="$t('sidebar.belts')" :breadcrumbs="breadcrumbs">
     <template #content>
       <b-col cols="12">
         <TablesTa title="belt" :headers="headers" :module="module" />
@@ -23,9 +23,9 @@ export default {
       module: "panel/belts",
       breadcrumbs: [
         {
-          text: "belts",
+          text: this.$t("sidebar.belts"),
           active: true,
-          to: "/panel/belts",
+          to: this.localePath("/panel/belts"),
         },
       ],
       headers: [

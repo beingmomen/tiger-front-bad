@@ -41,12 +41,14 @@
       "password": "Password",
       "forget": "Forgot Password?",
       "search": "Search",
+      "searchPlaceholder": "Type to Search",
       "all": "All",
       "name": "Name",
       "address": "Address",
       "phone": "Phone",
       "status": "Status",
       "time": "Time",
+      "filePlaceholder": "Choose a file or drop it here...",
       "message": "Message"
   },
   "modals": {
@@ -62,6 +64,11 @@
       "search": "Search",
       "yes": "Yes",
       "delete": "Delete",
+      "create": "Create",
+      "reset": "Reset",
+      "update": "Update",
+      "confirm": "Confirm",
+      "addBelt": "Add Belt",
       "no": "No"
   },
   "tables": {
@@ -84,6 +91,9 @@
       "welcome_msg": "This seller is still not activated.",
       "unregistered": "Unregistered",
       "active": "Active",
-      "dis_active": "Disactive"
+      "create": "Create",
+      "update": "Update",
+      "beltsTimeLine": "Belts Timeline",
+      "dis_active": "Dis Active"
   }
 }

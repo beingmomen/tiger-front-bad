@@ -1,5 +1,5 @@
 <template>
-  <SettingsLayout title="belts" :breadcrumbs="breadcrumbs">
+  <SettingsLayout :title="$t('sidebar.belts')" :breadcrumbs="breadcrumbs">
     <template #content>
       <ActionsCreate title="belt" :module="module">
         <template #create>
@@ -11,7 +11,7 @@
 
           <FormInputIcon label="Color" storeKey="color" :module="module">
             <template #icon>
-              <user-icon size="1.5x" class="custom-class"></user-icon>
+              <font-awesome-icon icon="fa-solid fa-palette" class="fa-xl" />
             </template>
           </FormInputIcon>
 
@@ -56,14 +56,14 @@ export default {
       module: "panel/belts",
       breadcrumbs: [
         {
-          text: "belts",
+          text: this.$t("sidebar.belts"),
           active: false,
-          to: "/panel/belts",
+          to: this.localePath("/panel/belts"),
         },
         {
-          text: "create",
+          text: this.$t("cards.create"),
           active: true,
-          to: "/panel/belts/create",
+          to: this.localePath("/panel/belts/create"),
         },
       ],
     };

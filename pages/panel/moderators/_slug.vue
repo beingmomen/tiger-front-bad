@@ -1,5 +1,5 @@
 <template>
-  <SettingsLayout title="moderators" :breadcrumbs="breadcrumbs">
+  <SettingsLayout :title="$t('sidebar.moderators')" :breadcrumbs="breadcrumbs">
     <template #content>
       <ActionsUpdate title="moderator" :module="module" :id="id">
         <template #update>
@@ -44,16 +44,6 @@
             storeKey="PreviewImage"
             path="moderators"
           />
-
-          <!-- reset and submit -->
-          <b-col cols="12" class="text-end">
-            <b-button type="reset" variant="outline-secondary">
-              Reset
-            </b-button>
-            <b-button type="submit" variant="primary" class="mr-1">
-              Update
-            </b-button>
-          </b-col>
         </template>
       </ActionsUpdate>
     </template>
@@ -98,14 +88,14 @@ export default {
       module: "panel/moderators",
       breadcrumbs: [
         {
-          text: "moderators",
+          text: this.$t("sidebar.moderators"),
           active: false,
-          to: "/panel/moderators",
+          to: this.localePath("/panel/moderators"),
         },
         {
-          text: "update",
+          text: this.$t("cards.update"),
           active: true,
-          to: "/panel/moderators/:slug",
+          to: this.localePath("/panel/moderators/:slug"),
         },
       ],
     };

@@ -1,5 +1,5 @@
 <template>
-  <SettingsLayout title="players" :breadcrumbs="breadcrumbs">
+  <SettingsLayout :title="$t('sidebar.players')" :breadcrumbs="breadcrumbs">
     <template #content>
       <ActionsUpdate title="player" :module="module" :id="id">
         <template #update>
@@ -12,73 +12,6 @@
           <FormDatePicker
             label="Start Date"
             storeKey="startDate"
-            :module="module"
-          >
-            <template #icon>
-              <calendar-icon size="1.5x" class="custom-class"></calendar-icon>
-            </template>
-          </FormDatePicker>
-
-          <FormDatePicker label="Birth Day" storeKey="birth" :module="module">
-            <template #icon>
-              <calendar-icon size="1.5x" class="custom-class"></calendar-icon>
-            </template>
-          </FormDatePicker>
-
-          <FormInputIcon
-            label="National ID"
-            storeKey="nationalId"
-            :module="module"
-          >
-            <template #icon>
-              <user-icon size="1.5x" class="custom-class"></user-icon>
-            </template>
-          </FormInputIcon>
-
-          <FormSelect
-            label="Activity"
-            labelSelect="name"
-            storeKey="activity"
-            listKey="activitiesList"
-            global
-            :change="true"
-            :module="module"
-          >
-            <template #icon>
-              <activity-icon size="1.5x" class="custom-class"></activity-icon>
-            </template>
-          </FormSelect>
-
-          <FormSelect
-            label="Championships"
-            labelSelect="name"
-            storeKey="championships"
-            listKey="championshipsList"
-            global
-            :multiple="true"
-            :module="module"
-          >
-            <template #icon>
-              <activity-icon size="1.5x" class="custom-class"></activity-icon>
-            </template>
-          </FormSelect>
-
-          <FormSelect
-            label="Last Belt Name"
-            labelSelect="name"
-            storeKey="lastBeltName"
-            listKey="beltsList"
-            global
-            :module="module"
-          >
-            <template #icon>
-              <activity-icon size="1.5x" class="custom-class"></activity-icon>
-            </template>
-          </FormSelect>
-
-          <FormDatePicker
-            label="Last Belt Date"
-            storeKey="lastBeltDate"
             :module="module"
           >
             <template #icon>
@@ -109,8 +42,78 @@
             path="players"
           />
 
-          <PanelPlayersTimeLine :module="module" />
-          <PanelPlayersUpdateFormRepeator :module="module" />
+          <FormDatePicker label="Birth Day" storeKey="birth" :module="module">
+            <template #icon>
+              <calendar-icon size="1.5x" class="custom-class"></calendar-icon>
+            </template>
+          </FormDatePicker>
+
+          <FormInputIcon
+            label="National ID"
+            storeKey="nationalId"
+            :module="module"
+          >
+            <template #icon>
+              <font-awesome-icon icon="fa-solid fa-id-card" class="fa-xl" />
+            </template>
+          </FormInputIcon>
+
+          <FormSelect
+            label="Activity"
+            labelSelect="name"
+            storeKey="activity"
+            listKey="activitiesList"
+            global
+            :change="true"
+            :module="module"
+          >
+            <template #icon>
+              <activity-icon size="1.5x" class="custom-class"></activity-icon>
+            </template>
+          </FormSelect>
+
+          <FormSelect
+            label="Championships"
+            labelSelect="name"
+            storeKey="championships"
+            listKey="championshipsList"
+            global
+            :multiple="true"
+            :module="module"
+          >
+            <template #icon>
+              <font-awesome-icon icon="fa-solid fa-trophy" class="fa-xl" />
+            </template>
+          </FormSelect>
+
+          <FormSelect
+            label="Last Belt Name"
+            labelSelect="name"
+            storeKey="lastBeltName"
+            listKey="beltsList"
+            global
+            :module="module"
+          >
+            <template #icon>
+              <font-awesome-icon icon="fa-solid fa-bacon" class="fa-xl" />
+            </template>
+          </FormSelect>
+
+          <FormDatePicker
+            label="Last Belt Date"
+            storeKey="lastBeltDate"
+            :module="module"
+          >
+            <template #icon>
+              <calendar-icon size="1.5x" class="custom-class"></calendar-icon>
+            </template>
+          </FormDatePicker>
+
+          <PanelPlayersTimeLine @showRepeator="showRepeator" :module="module" />
+          <PanelPlayersUpdateFormRepeator
+            v-if="updateTimeLine"
+            :module="module"
+          />
         </template>
       </ActionsUpdate>
     </template>
@@ -171,17 +174,23 @@ export default {
       module: "panel/players",
       breadcrumbs: [
         {
-          text: "players",
+          text: this.$t("sidebar.players"),
           active: false,
-          to: "/panel/players",
+          to: this.localePath("/panel/players"),
         },
         {
-          text: "update",
+          text: this.$t("cards.update"),
           active: true,
-          to: "/panel/players/:slug",
+          to: this.localePath("/panel/players/:slug"),
         },
       ],
+      updateTimeLine: false,
     };
+  },
+  methods: {
+    showRepeator() {
+      this.updateTimeLine = true;
+    },
   },
 
   components: {

@@ -1,5 +1,5 @@
 <template>
-  <SettingsLayout title="activities" :breadcrumbs="breadcrumbs">
+  <SettingsLayout :title="$t('sidebar.activities')" :breadcrumbs="breadcrumbs">
     <template #content>
       <ActionsUpdate title="activity" :module="module" :id="id">
         <template #update>
@@ -17,13 +17,13 @@
 
           <FormFile label="Image" storeKey="image" :module="module">
             <template #icon>
-              <mail-icon size="1.5x" class="custom-class"></mail-icon>
+              <image-icon size="1.5x" class="custom-class"></image-icon>
             </template>
           </FormFile>
 
           <FormFile label="Image Cover" storeKey="imageCover" :module="module">
             <template #icon>
-              <mail-icon size="1.5x" class="custom-class"></mail-icon>
+              <image-icon size="1.5x" class="custom-class"></image-icon>
             </template>
           </FormFile>
 
@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import { UserIcon, MailIcon, LockIcon } from "vue-feather-icons";
+import { UserIcon, ImageIcon } from "vue-feather-icons";
 import BCardCode from "~/@core/components/b-card-code/BCardCode.vue";
 export default {
   layout: "admin",
@@ -64,14 +64,14 @@ export default {
       module: "panel/activities",
       breadcrumbs: [
         {
-          text: "activities",
+          text: this.$t("sidebar.activities"),
           active: false,
-          to: "/panel/activities",
+          to: this.localePath("/panel/activities"),
         },
         {
-          text: "update",
+          text: this.$t("cards.update"),
           active: true,
-          to: "/panel/activities/:slug",
+          to: this.localePath("/panel/activities/:slug"),
         },
       ],
     };
@@ -92,8 +92,7 @@ export default {
   components: {
     BCardCode,
     UserIcon,
-    MailIcon,
-    LockIcon,
+    ImageIcon,
   },
 };
 </script>

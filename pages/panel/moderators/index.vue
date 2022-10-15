@@ -1,5 +1,5 @@
 <template>
-  <SettingsLayout title="moderators" :breadcrumbs="breadcrumbs">
+  <SettingsLayout :title="$t('sidebar.moderators')" :breadcrumbs="breadcrumbs">
     <template #content>
       <b-col cols="12">
         <TablesTa title="moderator" :headers="headers" :module="module" />
@@ -23,9 +23,9 @@ export default {
       module: "panel/moderators",
       breadcrumbs: [
         {
-          text: "moderators",
+          text: this.$t("sidebar.moderators"),
           active: true,
-          to: "/panel/moderators",
+          to: this.localePath("/panel/moderators"),
         },
       ],
       headers: [

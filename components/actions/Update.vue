@@ -1,13 +1,18 @@
 <template>
-  <b-card-code class="text-capitalize" :title="`Update ` + title">
+  <b-card-code
+    class="text-capitalize"
+    :title="$t('cards.update') + ' ' + title"
+  >
     <b-form class="vh-50" @submit.prevent="updateDataInDB">
       <b-row>
         <slot name="update"></slot>
         <!-- reset and submit -->
         <b-col cols="12" class="text-end">
-          <b-button type="reset" variant="outline-secondary"> Reset </b-button>
+          <b-button type="reset" variant="outline-secondary">
+            {{ $t("buttons.reset") }}
+          </b-button>
           <b-button type="submit" variant="primary" class="mr-1">
-            Update
+            {{ $t("buttons.update") }}
           </b-button>
         </b-col>
       </b-row>

@@ -1,5 +1,8 @@
 <template>
-  <SettingsLayout title="championships" :breadcrumbs="breadcrumbs">
+  <SettingsLayout
+    :title="$t('sidebar.championships')"
+    :breadcrumbs="breadcrumbs"
+  >
     <template #content>
       <ActionsUpdate title="championship" :module="module" :id="id">
         <template #update>
@@ -71,14 +74,14 @@ export default {
       module: "panel/championships",
       breadcrumbs: [
         {
-          text: "championships",
+          text: this.$t("sidebar.championships"),
           active: false,
-          to: "/panel/championships",
+          to: this.localePath("/panel/championships"),
         },
         {
-          text: "update",
+          text: this.$t("cards.update"),
           active: true,
-          to: "/panel/championships/:slug",
+          to: this.localePath("/panel/championships/:slug"),
         },
       ],
     };

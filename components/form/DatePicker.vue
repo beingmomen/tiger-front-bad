@@ -3,13 +3,17 @@
     <b-form-group :label-class="{ 'label-required': required }" :label="label">
       <b-input-group
         class="input-group-merge"
-        :class="{ 'flex-row-reverse': dashDir == 'rtl' }"
+        :class="
+          dashDir == 'rtl' ? 'form-input-icon-rtl' : 'form-input-icon-ltr'
+        "
       >
+        <!-- :class="{ 'flex-row-reverse': dashDir == 'rtl' }" -->
         <b-input-group-prepend is-text>
           <slot name="icon"></slot>
         </b-input-group-prepend>
+        <!-- :class="dashDir == 'rtl' ? 'text-end' : 'text-start'" -->
         <b-form-input
-          :class="dashDir == 'rtl' ? 'text-end' : 'text-start'"
+          class="text-start"
           style="height: 35px"
           id="example-input"
           v-model="getContent"
@@ -20,6 +24,7 @@
         />
         <b-input-group-append style="height: 35px">
           <b-form-datepicker
+            class="date-pick-btn"
             v-model="getContent"
             show-decade-nav
             button-only

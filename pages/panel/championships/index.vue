@@ -1,5 +1,8 @@
 <template>
-  <SettingsLayout title="championships" :breadcrumbs="breadcrumbs">
+  <SettingsLayout
+    :title="$t('sidebar.championships')"
+    :breadcrumbs="breadcrumbs"
+  >
     <template #content>
       <b-col cols="12">
         <TablesTa title="championship" :headers="headers" :module="module" />
@@ -23,9 +26,9 @@ export default {
       module: "panel/championships",
       breadcrumbs: [
         {
-          text: "championships",
+          text: this.$t("sidebar.championships"),
           active: true,
-          to: "/panel/championships",
+          to: this.localePath("/panel/championships"),
         },
       ],
       headers: [

@@ -1,17 +1,14 @@
 <template>
   <b-col :lg="lg" :md="md" :sm="sm" class="mb-1 custom-form">
-    <b-form-group
-      class="mt-1"
-      :label-class="{ 'label-required': required }"
-      :label="label"
-    >
+    <!-- class="mt-1" -->
+    <b-form-group :label-class="{ 'label-required': required }" :label="label">
       <b-input-group
         class="input-group-merge"
         :class="
           dashDir == 'rtl' ? 'form-input-icon-rtl' : 'form-input-icon-ltr'
         "
       >
-        <b-input-group-prepend is-text class="h-35 w-13 date-prepend">
+        <b-input-group-prepend is-text class="h-35 w-13 select-prepend">
           <slot name="icon"></slot>
         </b-input-group-prepend>
         <v-select

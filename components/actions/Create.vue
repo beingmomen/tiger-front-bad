@@ -1,13 +1,18 @@
 <template>
-  <b-card-code class="text-capitalize" :title="`Create New ` + title">
+  <b-card-code
+    class="text-capitalize"
+    :title="$t('cards.create') + ' ' + title"
+  >
     <b-form class="vh-50" @submit.prevent="addDataToDB">
       <b-row>
         <slot name="create"></slot>
         <!-- reset and submit -->
         <b-col cols="12" class="text-end">
-          <b-button type="reset" variant="outline-secondary"> Reset </b-button>
+          <b-button type="reset" variant="outline-secondary">
+            {{ $t("buttons.reset") }}
+          </b-button>
           <b-button type="submit" variant="primary" class="mr-1">
-            Create
+            {{ $t("buttons.create") }}
           </b-button>
         </b-col>
       </b-row>
