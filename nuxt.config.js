@@ -142,12 +142,12 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    // proxy: true,
+    proxy: true,
     // baseURL: "http://127.0.0.1:1234/api/v1",
     baseURL: "http://179.61.246.119:1234/api/v1",
   },
 
-  proxy: { "/api/": "http://141.136.42.31:15795/api/v1" },
+  proxy: { "/api/": "https://179.61.246.119:1234/api/v1" },
   // proxy: {
   //   "/api/": {
   //     target: "http://127.0.0.1:1234/api/v1/api",
