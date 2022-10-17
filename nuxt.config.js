@@ -144,7 +144,7 @@ export default {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
     // proxy: true,
     // baseURL: "http://127.0.0.1:1234/api/v1",
-    baseURL: "http://www.techmagic.online/api/v1",
+    baseURL: "https://www.techmagic.online/api/v1",
   },
 
   proxy: { "/api/": "https://179.61.246.119:1234/api/v1" },
@@ -183,7 +183,7 @@ export default {
   build: {},
   publicRuntimeConfig: {
     // NODE_URL_images: "http://127.0.0.1:1234/images",
-    NODE_URL_images: "http://www.techmagic.online/images",
+    NODE_URL_images: "https://www.techmagic.online/images",
   },
 };
 // http://179.61.246.119:1234/api/v1/players
