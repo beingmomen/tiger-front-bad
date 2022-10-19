@@ -105,8 +105,8 @@
           </b-row>
         </b-form>
       </div>
-      <div class="d-flex justify-content-between">
-        <!-- <b-button
+      <!-- <div class="d-flex justify-content-between">
+        <b-button
           class="d-flex align-items-center"
           variant="primary"
           @click="repeat"
@@ -114,7 +114,7 @@
         >
           <plus-icon size="1.5x" class="custom-class"></plus-icon>
           <span>Add New</span>
-        </b-button> -->
+        </b-button>
         <b-button
           class="d-flex align-items-center"
           variant="success"
@@ -123,7 +123,7 @@
           <check-icon size="1.5x" class="custom-class"></check-icon>
           <span style="">{{ $t("buttons.confirm") }}</span>
         </b-button>
-      </div>
+      </div> -->
     </b-card-code>
   </b-col>
 </template>
@@ -143,20 +143,23 @@ export default {
   props: {
     module: String,
   },
+  mounted() {
+    this.belts = this.currentBelts;
+  },
   data() {
     return {
-      belts: [{ belt: null, date: null }],
-      disabledRepeate: false,
+      belts: [],
+      disabledRepeate: true,
     };
   },
   methods: {
-    confirm(data) {
-      this.disabledRepeate = true;
-      this.$store.commit(
-        `${this.module}/belts`,
-        data[0].belt ? { data, confirm: true } : { data: [], confirm: true }
-      );
-    },
+    // confirm(data) {
+    //   this.disabledRepeate = true;
+    //   this.$store.commit(
+    //     `${this.module}/belts`,
+    //     data[0].belt ? { data, confirm: true } : { data: [], confirm: true }
+    //   );
+    // },
     repeat() {
       this.belts = [...this.belts, { belt: null, date: null }];
     },
@@ -171,6 +174,12 @@ export default {
     beltsList() {
       return this.$store.getters[`global/beltsList`];
     },
+    currentBelts() {
+      let belts = JSON.parse(
+        JSON.stringify(this.$store.getters[`${this.module}/belts`])
+      );
+      return belts;
+    },
   },
   components: {
     BCardCode,
@@ -181,6 +190,16 @@ export default {
     CheckIcon,
     TrashIcon,
     PlusSquareIcon,
+  },
+  watch: {
+    belts: {
+      handler(newValue, oldValue) {
+        let belts = JSON.parse(JSON.stringify(newValue));
+        this.$store.commit(`${this.module}/belts`, belts);
+        // this.$store.commit(`${this.module}/belts`, newValue);
+      },
+      deep: true,
+    },
   },
 };
 </script>

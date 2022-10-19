@@ -32,13 +32,11 @@ export default {
         { key: "name", label: "Name", sortable: true },
         { key: "color", label: "Color", sortable: true },
         {
-          key: "activities",
-          label: "Activity",
+          key: "activitiesBelts",
+          label: "activities",
           sortable: false,
           formatter: (value, key, item) => {
-            let data = [];
-            value.forEach((el) => data.push(el.name));
-            return data;
+            return item.activities;
           },
         },
         "actions",

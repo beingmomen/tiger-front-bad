@@ -52,6 +52,7 @@
             label="National ID"
             storeKey="nationalId"
             :module="module"
+            type="number"
           >
             <template #icon>
               <font-awesome-icon icon="fa-solid fa-id-card" class="fa-xl" />
@@ -109,7 +110,11 @@
             </template>
           </FormDatePicker>
 
-          <PanelPlayersTimeLine @showRepeator="showRepeator" :module="module" />
+          <PanelPlayersTimeLine
+            v-if="!updateTimeLine"
+            @showRepeator="showRepeator"
+            :module="module"
+          />
           <PanelPlayersUpdateFormRepeator
             v-if="updateTimeLine"
             :module="module"
@@ -184,7 +189,7 @@ export default {
           to: this.localePath("/panel/players/:slug"),
         },
       ],
-      updateTimeLine: false,
+      updateTimeLine: true,
     };
   },
   methods: {

@@ -119,7 +119,8 @@ export const actions = {
     });
     commit("activity", { key: "activity", value: payload.activity._id });
     commit("setBelts", payload.belts);
-    commit("belts", { data: payload.belts, confirm: false });
+    // commit("belts", { data: payload.belts, change: false });
+    commit("belts", payload.belts);
   },
 
   activityChange({ commit, state, dispatch }) {
@@ -227,17 +228,27 @@ export const mutations = {
     state.belts = val;
   },
   belts(state, val) {
-    let arr = [];
-    val.data.forEach((el) => {
-      arr.push({
-        belt: el.belt._id || el.belt,
-        date: el.date,
-      });
-    });
-    if (val.confirm) {
-      state.data.belts = [...arr, ...state.data.belts];
-    } else {
-      state.data.belts = arr;
-    }
+    state.data.belts = val;
+    // if (!val.change) {
+    //   console.warn("val", val);
+    //   let belts = JSON.parse(JSON.stringify(val));
+    //   state.data.belts = belts;
+    // } else {
+    //   state.data.belts = val.data;
+    // }
   },
+  // belts(state, val) {
+  //   let arr = [];
+  //   val.data.forEach((el) => {
+  //     arr.push({
+  //       belt: el.belt._id || el.belt,
+  //       date: el.date,
+  //     });
+  //   });
+  //   if (val.confirm) {
+  //     state.data.belts = [...arr, ...state.data.belts];
+  //   } else {
+  //     state.data.belts = arr;
+  //   }
+  // },
 };

@@ -41,6 +41,7 @@
             label="National ID"
             storeKey="nationalId"
             :module="module"
+            type="number"
           >
             <template #icon>
               <font-awesome-icon icon="fa-solid fa-id-card" class="fa-xl" />

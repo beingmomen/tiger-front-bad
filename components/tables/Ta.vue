@@ -77,6 +77,17 @@
         :sort-desc.sync="sortDesc"
         :sort-direction="sortDirection"
       >
+        <template #cell(activitiesBelts)="data">
+          <b-badge
+            class="me-1"
+            variant="light-primary"
+            v-for="(activity, i) in data.item.activities"
+            :key="i"
+          >
+            {{ activity.name }}
+          </b-badge>
+          <!-- <span v-for="(belt, i) in data" :key="i">{{ belt.activities }}</span> -->
+        </template>
         <template #cell(avatar)="data">
           <b-avatar class="avatar-table" :src="data.value" />
         </template>

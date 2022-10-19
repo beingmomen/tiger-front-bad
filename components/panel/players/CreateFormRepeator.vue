@@ -33,7 +33,7 @@
                   :reduce="(item) => item.id"
                   label="name"
                   :dir="dashDir"
-                  :options="beltsList"
+                  :options="multipleBelts"
                   placeholder="Select"
                 ></v-select>
               </b-input-group>
@@ -108,15 +108,15 @@
         </b-row>
       </b-form>
     </div>
-    <div class="d-flex justify-content-between">
-      <!-- <b-button
+    <!-- <div class="d-flex justify-content-between">
+      <b-button
         class="d-flex align-items-center"
         variant="primary"
         @click="repeat"
       >
         <plus-icon size="1.5x" class="custom-class me-1"></plus-icon>
         <span>{{ $t("buttons.addBelt") }}</span>
-      </b-button> -->
+      </b-button>
       <b-button
         class="d-flex align-items-center"
         variant="success"
@@ -125,7 +125,7 @@
         <check-icon size="1.5x" class="custom-class me-1"></check-icon>
         <span style="">{{ $t("buttons.confirm") }}</span>
       </b-button>
-    </div>
+    </div> -->
   </b-card-code>
 </template>
 
@@ -144,9 +144,14 @@ export default {
   props: {
     module: String,
   },
+  mounted() {
+    this.multipleBelts = this.beltsList;
+  },
   data() {
     return {
       belts: [{ belt: null, date: null }],
+      multipleBelts: [],
+      selectedBelts: [],
     };
   },
   computed: {
@@ -155,9 +160,9 @@ export default {
     },
   },
   methods: {
-    confirm(data) {
-      this.$store.commit(`${this.module}/belts`, data);
-    },
+    // confirm(data) {
+    //   this.$store.commit(`${this.module}/belts`, data);
+    // },
     repeat() {
       this.belts = [...this.belts, { belt: null, date: null }];
     },
@@ -177,6 +182,22 @@ export default {
     CheckIcon,
     TrashIcon,
     PlusSquareIcon,
+  },
+  watch: {
+    belts: {
+      handler(newValue, oldValue) {
+        // let selected = [];
+        // newValue.forEach((b) => {
+        //   selected = this.multipleBelts.filter((x) => x._id != b.belt);
+        // });
+        // console.warn("selected", selected);
+        // this.multipleBelts = selected;
+        // console.warn("this.multipleBelts", this.multipleBelts);
+        let belts = JSON.parse(JSON.stringify(newValue));
+        this.$store.commit(`${this.module}/belts`, belts);
+      },
+      deep: true,
+    },
   },
 };
 </script>

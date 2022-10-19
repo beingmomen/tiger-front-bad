@@ -60,7 +60,10 @@ export const actions = {
           });
         } else if (key == "belts") {
           value.forEach((el, i) => {
-            formData.append(`belts[${i}][belt]`, el.belt);
+            formData.append(
+              `belts[${i}][belt]`,
+              typeof el.belt == "object" ? el.belt._id : el.belt
+            );
             formData.append(`belts[${i}][date]`, el.date);
           });
         } else if (key == "lastBelt") {
