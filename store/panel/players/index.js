@@ -89,6 +89,8 @@ export const actions = {
         if (res.data.data.length) {
           commit("setAllData", res.data.data);
           commit("setTotalItems", res.total);
+        } else {
+          this.$toast.info("No data to show");
         }
       });
   },

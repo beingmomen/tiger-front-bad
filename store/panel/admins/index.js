@@ -1,17 +1,19 @@
 const reset = () => ({
   name: null,
-  date: null,
-  activity: null,
+  email: null,
+  password: null,
+  passwordConfirm: null,
 });
 
 export const state = () => ({
-  module: "/championships",
+  module: "/users",
   allData: [],
-  totalItems: null,
   data: {
     name: null,
-    date: null,
-    activity: null,
+    email: null,
+    password: null,
+    passwordConfirm: null,
+    role: "admin",
   },
 });
 
@@ -19,30 +21,30 @@ export const getters = {
   getAllData(state) {
     return state.allData;
   },
-  getTotalItems(state) {
-    return state.totalItems;
-  },
   name(state) {
     return state.data.name;
   },
-  date(state) {
-    return state.data.date;
+  email(state) {
+    return state.data.email;
   },
-  activity(state) {
-    return state.data.activity;
+  password(state) {
+    return state.data.password;
+  },
+  passwordConfirm(state) {
+    return state.data.passwordConfirm;
   },
 };
 
 export const actions = {
-  getAllDataFromApi({ commit }, payload) {
-    commit("setAllData", payload.data.data);
-    commit("setTotalItems", payload.total);
+  getAllDataFromApi({ commit, state }, payload) {
+    commit("setAllData", payload);
   },
 
   getDataByQuery({ state, commit }, payload) {
     this.$axios
       .$get(state.module, {
         params: {
+          role: "admin",
           page: payload.page,
           search: payload.search,
         },
@@ -59,20 +61,24 @@ export const actions = {
 
   async showSingleData({ commit }, payload) {
     commit("name", { key: "name", value: payload.name });
-    commit("date", { key: "date", value: payload.date });
-    commit("activity", { key: "activity", value: payload.activity._id });
+    commit("email", { key: "email", value: payload.email });
+    commit("password", { key: "password", value: payload.password });
+    commit("passwordConfirm", {
+      key: "passwordConfirm",
+      value: payload.passwordConfirm,
+    });
   },
 
   async addDataToDB({ state }) {
-    return this.$axios.$post(state.module, state.data);
+    return this.$axios.$post(`${state.module}/admin`, state.data);
   },
 
-  async updateDataInDB({ state }, payload) {
+  async updateDataInDB({ state, dispatch }, payload) {
     return this.$axios.$patch(`${state.module}/${payload}`, state.data);
   },
 
-  deleteFromDB({ state }, payload) {
-    return this.$axios.$delete(`${state.module}/${payload}`);
+  deleteFromDB({ dispatch }, payload) {
+    return this.$axios.$delete(`/users/${payload}`);
   },
 
   resetData({ commit }, payload) {
@@ -84,19 +90,19 @@ export const mutations = {
   setAllData(state, val) {
     state.allData = val;
   },
-  setTotalItems(state, val) {
-    state.totalItems = val;
-  },
   setData(state, val) {
     state.data = val;
   },
   name(state, val) {
     state.data[val.key] = val.value;
   },
-  date(state, val) {
+  email(state, val) {
     state.data[val.key] = val.value;
   },
-  activity(state, val) {
+  password(state, val) {
+    state.data[val.key] = val.value;
+  },
+  passwordConfirm(state, val) {
     state.data[val.key] = val.value;
   },
 };

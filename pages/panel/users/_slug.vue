@@ -8,13 +8,6 @@
 export default {
   layout: "admin",
   name: "slug",
-  props: {
-    test: String,
-  },
-  mounted() {
-    console.warn("test", this.test);
-    console.warn("route", this.$route);
-  },
 };
 </script>
 

@@ -47,9 +47,14 @@
           </template>
         </MainSidebarLink>
         <MainSidebarBreakLink />
-        <MainSidebarLink :name="$t(`sidebar.users`)" route="/panel/users">
+        <MainSidebarLink :name="$t(`sidebar.admins`)" route="/panel/admins">
           <template #icon>
             <user-icon size="1.5x" class="custom-class"></user-icon>
+          </template>
+        </MainSidebarLink>
+        <MainSidebarLink :name="$t(`sidebar.users`)" route="/panel/users">
+          <template #icon>
+            <users-icon size="1.5x" class="custom-class"></users-icon>
           </template>
         </MainSidebarLink>
         <MainSidebarLink
@@ -100,6 +105,7 @@ import {
   XIcon,
   HomeIcon,
   UserIcon,
+  UsersIcon,
   ShoppingCartIcon,
   ActivityIcon,
   UserCheckIcon,
@@ -125,6 +131,7 @@ export default {
     XIcon,
     HomeIcon,
     UserIcon,
+    UsersIcon,
     ShoppingCartIcon,
     ActivityIcon,
     UserCheckIcon,

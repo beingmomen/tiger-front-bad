@@ -1,14 +1,8 @@
 <template>
-  <SettingsLayout title="users" :breadcrumbs="breadcrumbs">
+  <SettingsLayout title="admins" :breadcrumbs="breadcrumbs">
     <template #content>
       <b-col cols="12">
-        <TablesTa
-          title="user"
-          :headers="headers"
-          :module="module"
-          :create="false"
-          :update="false"
-        />
+        <TablesTa title="admin" :headers="headers" :module="module" />
       </b-col>
     </template>
   </SettingsLayout>
@@ -16,28 +10,28 @@
 
 <script>
 export default {
-  name: "users",
+  name: "admins",
   layout: "admin",
   async asyncData({ $axios, store, $toast }) {
     await $axios
       .$get(`/users`, {
         params: {
-          role: "user",
+          role: "admin",
         },
       })
       .then((res) => {
-        store.dispatch("panel/users/getAllDataFromApi", res.data.data);
+        store.dispatch("panel/admins/getAllDataFromApi", res.data.data);
       });
     return {};
   },
   data() {
     return {
-      module: "panel/users",
+      module: "panel/admins",
       breadcrumbs: [
         {
-          text: "users",
+          text: "admins",
           active: true,
-          to: "/panel/users",
+          to: "/panel/admins",
         },
       ],
       headers: [

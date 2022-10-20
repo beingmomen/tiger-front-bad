@@ -117,7 +117,7 @@
             </template>
 
             <b-dropdown-item
-              :to="{ name: '' }"
+              :to="localePath('/panel/profile')"
               link-class="d-flex align-items-center"
             >
               <user-icon size="1.5x" class="ms-2"></user-icon>

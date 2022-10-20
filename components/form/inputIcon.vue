@@ -17,7 +17,7 @@
         <b-form-input
           style="height: 35px"
           class=""
-          id="vi-first-name"
+          autocomplete="off"
           :placeholder="label"
           v-model="getContent"
           :disabled="disabled"

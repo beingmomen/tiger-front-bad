@@ -9,11 +9,7 @@
     "
   >
     <p class="fs-1 fw-bold">Landing Page</p>
-    <b-button variant="primary">
-      <nuxt-link :to="localePath('/panel')" class="text-white">
-        Panel
-      </nuxt-link>
-    </b-button>
+    <b-button variant="primary" :to="localePath('/panel')"> Panel </b-button>
   </div>
 </template>
 
