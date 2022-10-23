@@ -182,6 +182,7 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
   publicRuntimeConfig: {
+    SITE_TITLE: "Soft Magic",
     NODE_URL_images: "http://127.0.0.1:1234/images",
     // NODE_URL_images: "https://api.techmagic.online/images",
   },

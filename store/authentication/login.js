@@ -38,8 +38,6 @@ export const actions = {
       closeOnClick: false,
       showCloseButtonOnHover: true,
     });
-
-    console.warn("res login", res);
   },
 };
 

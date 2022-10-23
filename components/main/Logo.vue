@@ -8,6 +8,6 @@ export default {};
 
 <style lang="scss" scoped>
 .my-logo {
-  mix-blend-mode: multiply;
+  // mix-blend-mode: multiply;
 }
 </style>

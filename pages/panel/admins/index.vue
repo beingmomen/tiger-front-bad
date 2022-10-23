@@ -1,8 +1,12 @@
 <template>
-  <SettingsLayout title="admins" :breadcrumbs="breadcrumbs">
+  <SettingsLayout :title="$t('sidebar.admins')" :breadcrumbs="breadcrumbs">
     <template #content>
       <b-col cols="12">
-        <TablesTa title="admin" :headers="headers" :module="module" />
+        <TablesTa
+          :title="$t('buttons.admin')"
+          :headers="headers"
+          :module="module"
+        />
       </b-col>
     </template>
   </SettingsLayout>
@@ -29,7 +33,7 @@ export default {
       module: "panel/admins",
       breadcrumbs: [
         {
-          text: "admins",
+          text: this.$t("sidebar.admins"),
           active: true,
           to: "/panel/admins",
         },
@@ -37,16 +41,18 @@ export default {
       headers: [
         {
           key: "avatar",
-          label: "Photo",
+          label: this.$t("tables.photo"),
           sortable: false,
           formatter: (value, key, item) => {
             let url = `${this.$config.NODE_URL_images}/users/${item.photo}`;
             return url;
           },
         },
-        { key: "name", label: "Name", sortable: true },
-        { key: "email", label: "Email", sortable: false },
-        "actions",
+        { key: "name", label: this.$t("tables.name"), sortable: true },
+        { key: "email", label: this.$t("tables.email"), sortable: false },
+        { key: "country", label: this.$t("tables.country"), sortable: false },
+        { key: "phone", label: this.$t("tables.phone"), sortable: false },
+        { key: "actions", label: this.$t("tables.actions"), sortable: false },
       ],
     };
   },

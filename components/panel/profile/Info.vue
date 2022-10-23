@@ -16,21 +16,24 @@
             size="104px"
             rounded
           />
-          <div class="d-flex flex-column ml-1">
+          <div class="d-flex flex-column ml-1 mx-75">
             <div class="mb-1">
               <h4 class="mb-0">{{ $auth.user.name }}</h4>
               <span class="card-text">{{ $auth.user.email }}</span>
             </div>
             <div class="d-flex flex-wrap">
-              <b-button variant="primary" @click="$refs.refInputEl.click()">
-                <input
+              <b-button variant="primary" @click="openFile">
+                <b-form-file
+                  id="myImage"
                   ref="refInputEl"
-                  type="file"
                   class="d-none"
-                  @input="inputImageRenderer"
+                  v-model="image"
                 />
-                <span class="d-none d-sm-inline">Update</span>
-                <feather-icon icon="EditIcon" class="d-inline d-sm-none" />
+                <!-- @input="inputImageRenderer" -->
+
+                <span class="d-none d-sm-inline">
+                  {{ $t("cards.changePhone") }}
+                </span>
               </b-button>
             </div>
           </div>
@@ -42,31 +45,40 @@
         <table class="mt-2 mt-xl-0 w-100">
           <tr>
             <th class="pb-50">
-              <user-icon size="1.5x" class="custom-class mr-75"></user-icon>
-              <span class="font-weight-bold">Username</span>
+              <user-icon size="1.5x" class="custom-class mx-75"></user-icon>
+              <span class="font-weight-bold">{{ $t("cards.username") }}</span>
             </th>
             <td class="pb-50">{{ $auth.user.slug }}</td>
           </tr>
           <tr>
             <th class="pb-50">
-              <star-icon size="1.5x" class="custom-class mr-75"></star-icon>
-              <span class="font-weight-bold">Role</span>
+              <check-icon size="1.5x" class="custom-class mx-75"></check-icon>
+              <span class="font-weight-bold">{{ $t("cards.status") }}</span>
+            </th>
+            <td class="pb-50 text-capitalize">
+              {{ $auth.user.active ? "Active" : "Suspend" }}
+            </td>
+          </tr>
+          <tr>
+            <th class="pb-50">
+              <star-icon size="1.5x" class="custom-class mx-75"></star-icon>
+              <span class="font-weight-bold">{{ $t("cards.role") }}</span>
             </th>
             <td class="pb-50 text-capitalize">{{ $auth.user.role }}</td>
           </tr>
           <tr>
             <th class="pb-50">
-              <flag-icon size="1.5x" class="custom-class mr-75"></flag-icon>
-              <span class="font-weight-bold">Country</span>
+              <flag-icon size="1.5x" class="custom-class mx-75"></flag-icon>
+              <span class="font-weight-bold">{{ $t("cards.country") }}</span>
             </th>
-            <td class="pb-50">country</td>
+            <td class="pb-50">{{ $auth.user.country }}</td>
           </tr>
           <tr>
             <th>
-              <phone-icon size="1.5x" class="custom-class mr-75"></phone-icon>
-              <span class="font-weight-bold">Contact</span>
+              <phone-icon size="1.5x" class="custom-class mx-75"></phone-icon>
+              <span class="font-weight-bold">{{ $t("cards.contact") }}</span>
             </th>
-            <td>contact</td>
+            <td>{{ $auth.user.phone }}</td>
           </tr>
         </table>
       </b-col>
@@ -80,6 +92,7 @@ import {
   StarIcon,
   FlagIcon,
   PhoneIcon,
+  CheckIcon,
   XIcon,
   HomeIcon,
   UsersIcon,
@@ -88,10 +101,27 @@ import {
   UserCheckIcon,
 } from "vue-feather-icons";
 export default {
+  props: {
+    module: String,
+    img: null,
+  },
   computed: {
     url() {
       let url = `${this.$config.NODE_URL_images}/users/${this.$auth.user.photo}`;
       return url;
+    },
+    image: {
+      get: function () {
+        return this.img;
+      },
+      set(val) {
+        this.$store
+          .dispatch(`${this.module}/updateMe`, { photo: val })
+          .then(() => {
+            this.$store.dispatch(`${this.module}/me`);
+            this.$nuxt.refresh();
+          });
+      },
     },
   },
   components: {
@@ -99,12 +129,26 @@ export default {
     StarIcon,
     FlagIcon,
     PhoneIcon,
+    CheckIcon,
     XIcon,
     HomeIcon,
     UsersIcon,
     ShoppingCartIcon,
     ActivityIcon,
     UserCheckIcon,
+  },
+  methods: {
+    openFile() {
+      document.getElementById("myImage").click();
+    },
+    inputImageRenderer() {
+      this.$store
+        .dispatch(`${this.module}/updateMe`, { photo: this.img })
+        .then(() => {
+          this.$store.dispatch(`${this.module}/me`);
+          this.$nuxt.refresh();
+        });
+    },
   },
 };
 </script>

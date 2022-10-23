@@ -1,16 +1,20 @@
 <template>
   <SettingsLayout :title="$t('sidebar.admins')" :breadcrumbs="breadcrumbs">
     <template #content>
-      <ActionsCreate title="admin" :module="module">
+      <ActionsCreate :title="$t('cards.admin')" :module="module">
         <template #create>
-          <FormInputIcon label="Name" storeKey="name" :module="module">
+          <FormInputIcon
+            :label="$t('inputs.name')"
+            storeKey="name"
+            :module="module"
+          >
             <template #icon>
               <user-icon size="1.5x" class="custom-class"></user-icon>
             </template>
           </FormInputIcon>
 
           <FormInputIcon
-            label="Email"
+            :label="$t('inputs.email')"
             storeKey="email"
             type="email"
             :module="module"
@@ -20,27 +24,25 @@
             </template>
           </FormInputIcon>
 
-          <FormInputIcon
-            label="Password"
+          <FormPasswordInput
+            :label="$t('inputs.password')"
             storeKey="password"
-            type="password"
             :module="module"
           >
             <template #icon>
               <lock-icon size="1.5x" class="custom-class"></lock-icon>
             </template>
-          </FormInputIcon>
+          </FormPasswordInput>
 
-          <FormInputIcon
-            label="Confirm Password"
+          <FormPasswordInput
+            :label="$t('inputs.passwordConfirm')"
             storeKey="passwordConfirm"
-            type="password"
             :module="module"
           >
             <template #icon>
               <lock-icon size="1.5x" class="custom-class"></lock-icon>
             </template>
-          </FormInputIcon>
+          </FormPasswordInput>
         </template>
       </ActionsCreate>
     </template>

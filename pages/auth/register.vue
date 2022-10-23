@@ -11,7 +11,7 @@
   >
     <template #auth>
       <FormInputIcon
-        label="Name"
+        :label="$t('inputs.name')"
         storeKey="name"
         :module="module"
         lg="12"
@@ -23,7 +23,7 @@
       </FormInputIcon>
 
       <FormInputIcon
-        label="Email"
+        :label="$t('inputs.email')"
         storeKey="email"
         type="email"
         :module="module"
@@ -36,7 +36,7 @@
       </FormInputIcon>
 
       <FormSelect
-        label="Countries"
+        :label="$t('inputs.country')"
         labelSelect="name"
         storeKey="country"
         listKey="countriesList"
@@ -53,7 +53,7 @@
       </FormSelect>
 
       <FormInputIcon
-        label="Phone"
+        :label="$t('inputs.phone')"
         storeKey="phone"
         type="tel"
         :module="module"
@@ -66,7 +66,7 @@
       </FormInputIcon>
 
       <FormPasswordInput
-        label="Password"
+        :label="$t('inputs.password')"
         storeKey="password"
         :module="module"
         lg="12"
@@ -78,7 +78,7 @@
       </FormPasswordInput>
 
       <FormPasswordInput
-        label="Confirm Password"
+        :label="$t('inputs.passwordConfirm')"
         storeKey="passwordConfirm"
         :module="module"
         lg="12"

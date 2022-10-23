@@ -16,15 +16,8 @@
         <b-row v-for="(b, index) in belts" :key="index" ref="row">
           <b-col lg="6" md="6" sm="12" class="mb-1 custom-form">
             <b-form-group label="Belt Name">
-              <b-input-group
-                class="input-group-merge"
-                :class="
-                  dashDir == 'rtl'
-                    ? 'form-input-icon-rtl'
-                    : 'form-input-icon-ltr'
-                "
-              >
-                <b-input-group-prepend is-text class="h-35 w-13 select-prepend">
+              <b-input-group class="input-group-merge">
+                <b-input-group-prepend is-text class="h-35 w-13">
                   <font-awesome-icon icon="fa-solid fa-bacon" class="fa-xl" />
                 </b-input-group-prepend>
                 <v-select
@@ -41,15 +34,8 @@
           </b-col>
 
           <b-col :lg="5" md="5" sm="11" class="mb-1 custom-form">
-            <b-form-group label="Belt Date" label-for="vi-first-name">
-              <b-input-group
-                class="input-group-merge"
-                :class="
-                  dashDir == 'rtl'
-                    ? 'form-input-icon-rtl'
-                    : 'form-input-icon-ltr'
-                "
-              >
+            <b-form-group label="Belt Date">
+              <b-input-group class="input-group-merge">
                 <b-input-group-prepend is-text style="height: 35px">
                   <calendar-icon
                     size="1.5x"
@@ -58,7 +44,6 @@
                 </b-input-group-prepend>
                 <b-form-input
                   style="height: 35px"
-                  id="example-input"
                   v-model="b.date"
                   type="text"
                   placeholder="YYYY-MM-DD"
@@ -67,7 +52,6 @@
                 />
                 <b-input-group-append style="height: 35px">
                   <b-form-datepicker
-                    class="date-pick-btn"
                     v-model="b.date"
                     show-decade-nav
                     button-only
@@ -87,15 +71,6 @@
             sm="1"
             class="mb-50 d-flex justify-content-center align-items-center"
           >
-            <!-- <b-button
-              variant="outline-danger"
-              class="mt-0 mt-md-2 d-flex align-items-center"
-              @click="removeItem(index)"
-            >
-              <x-icon size="1.5x" class="custom-class"></x-icon>
-
-              <span>Delete</span>
-            </b-button> -->
             <trash-icon
               @click="removeItem(index)"
               size="1.5x"
@@ -108,24 +83,6 @@
         </b-row>
       </b-form>
     </div>
-    <!-- <div class="d-flex justify-content-between">
-      <b-button
-        class="d-flex align-items-center"
-        variant="primary"
-        @click="repeat"
-      >
-        <plus-icon size="1.5x" class="custom-class me-1"></plus-icon>
-        <span>{{ $t("buttons.addBelt") }}</span>
-      </b-button>
-      <b-button
-        class="d-flex align-items-center"
-        variant="success"
-        @click="confirm(belts)"
-      >
-        <check-icon size="1.5x" class="custom-class me-1"></check-icon>
-        <span style="">{{ $t("buttons.confirm") }}</span>
-      </b-button>
-    </div> -->
   </b-card-code>
 </template>
 
@@ -160,9 +117,6 @@ export default {
     },
   },
   methods: {
-    // confirm(data) {
-    //   this.$store.commit(`${this.module}/belts`, data);
-    // },
     repeat() {
       this.belts = [...this.belts, { belt: null, date: null }];
     },
@@ -186,13 +140,6 @@ export default {
   watch: {
     belts: {
       handler(newValue, oldValue) {
-        // let selected = [];
-        // newValue.forEach((b) => {
-        //   selected = this.multipleBelts.filter((x) => x._id != b.belt);
-        // });
-        // console.warn("selected", selected);
-        // this.multipleBelts = selected;
-        // console.warn("this.multipleBelts", this.multipleBelts);
         let belts = JSON.parse(JSON.stringify(newValue));
         this.$store.commit(`${this.module}/belts`, belts);
       },

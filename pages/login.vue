@@ -1,7 +1,7 @@
 <template>
   <ActionsAuth
     :img="img"
-    :welcome="$t('login.welcome')"
+    :welcome="`${$t('login.welcome')} ${this.$config.SITE_TITLE}! 👋`"
     :please="$t('login.please')"
     :first="$t('login.new_platform')"
     :second="$t('login.new_account')"
@@ -11,7 +11,7 @@
   >
     <template #auth>
       <FormInputIcon
-        label="Email"
+        :label="$t('inputs.email')"
         storeKey="email"
         type="email"
         :module="module"
@@ -24,7 +24,7 @@
       </FormInputIcon>
 
       <FormPasswordInput
-        label="Password"
+        :label="$t('inputs.password')"
         storeKey="password"
         :module="module"
         :forget="true"
@@ -51,6 +51,9 @@ export default {
       img: "login-v2.svg",
       btnDisabled: false,
     };
+  },
+  mounted() {
+    console.warn("test", this.$config.SITE_TITLE);
   },
   components: {
     MailIcon,

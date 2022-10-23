@@ -16,17 +16,32 @@
       <!-- First Row -->
       <b-row>
         <b-col cols="12">
-          <PanelProfileInfo />
+          <PanelProfileInfo :module="module" />
+        </b-col>
+      </b-row>
+
+      <b-row>
+        <b-col cols="12">
+          <PanelProfileUpdateInfo :module="module" @updateMe="updateMe" />
+        </b-col>
+      </b-row>
+
+      <b-row>
+        <b-col cols="12">
+          <PanelProfileUpdatePassword
+            :module="module"
+            @updatePass="updatePass"
+          />
         </b-col>
       </b-row>
 
       <b-row>
         <b-col cols="12" lg="6">
-          <PanelProfileTimeLine />
+          <!-- <PanelProfileTimeLine /> -->
         </b-col>
       </b-row>
 
-      <PanelProfileTable />
+      <!-- <PanelProfileTable /> -->
     </template>
   </div>
 </template>
@@ -36,10 +51,31 @@
 export default {
   layout: "admin",
   name: "slug",
+  async asyncData({ $axios, store, $toast, $auth }) {
+    store.dispatch("panel/profile/getAllDataFromApi", $auth.user);
+    return {};
+  },
   data() {
     return {
       userData: true,
+      module: "panel/profile",
     };
+  },
+  methods: {
+    updateMe() {
+      this.$store.dispatch(`${this.module}/updateMe`).then(() => {
+        this.$store.dispatch(`${this.module}/me`);
+        this.$nuxt.refresh();
+        this.$toast.success("Updated Successfully");
+      });
+    },
+    updatePass() {
+      this.$store.dispatch(`${this.module}/updatePass`).then(() => {
+        this.$nuxt.refresh();
+        this.$toast.success("Updated Successfully");
+        this.$store.dispatch(`${this.module}/resetSecret`);
+      });
+    },
   },
 };
 </script>

@@ -8,7 +8,6 @@
         @click="repeat"
         size="1.5x"
         class="custom-class plus-row position-absolute text-primary fs-3"
-        :class="dashDir == 'rtl' ? 'plus-row-rtl' : 'plus-row-ltr'"
       ></plus-square-icon>
       <div>
         <b-form ref="form" class="repeater-form">
@@ -16,18 +15,8 @@
           <b-row v-for="(b, index) in belts" :key="index" ref="row">
             <b-col lg="12" md="12" sm="12" class="mb-1 custom-form">
               <b-form-group label="Belt Name">
-                <b-input-group
-                  class="input-group-merge"
-                  :class="
-                    dashDir == 'rtl'
-                      ? 'form-input-icon-rtl'
-                      : 'form-input-icon-ltr'
-                  "
-                >
-                  <b-input-group-prepend
-                    is-text
-                    class="h-35 w-13 select-prepend"
-                  >
+                <b-input-group class="input-group-merge">
+                  <b-input-group-prepend is-text class="h-35 w-13">
                     <activity-icon
                       size="1.5x"
                       class="custom-class"
@@ -47,15 +36,8 @@
             </b-col>
 
             <b-col :lg="11" md="11" sm="11" class="mb-1 custom-form">
-              <b-form-group label="Belt Date" label-for="vi-first-name">
-                <b-input-group
-                  class="input-group-merge"
-                  :class="
-                    dashDir == 'rtl'
-                      ? 'form-input-icon-rtl'
-                      : 'form-input-icon-ltr'
-                  "
-                >
+              <b-form-group label="Belt Date">
+                <b-input-group class="input-group-merge">
                   <b-input-group-prepend is-text style="height: 35px">
                     <calendar-icon
                       size="1.5x"
@@ -64,7 +46,6 @@
                   </b-input-group-prepend>
                   <b-form-input
                     style="height: 35px"
-                    id="example-input"
                     v-model="b.date"
                     type="text"
                     placeholder="YYYY-MM-DD"
@@ -73,7 +54,6 @@
                   />
                   <b-input-group-append style="height: 35px">
                     <b-form-datepicker
-                      class="date-pick-btn"
                       v-model="b.date"
                       show-decade-nav
                       button-only
@@ -105,25 +85,6 @@
           </b-row>
         </b-form>
       </div>
-      <!-- <div class="d-flex justify-content-between">
-        <b-button
-          class="d-flex align-items-center"
-          variant="primary"
-          @click="repeat"
-          :disabled="disabledRepeate"
-        >
-          <plus-icon size="1.5x" class="custom-class"></plus-icon>
-          <span>Add New</span>
-        </b-button>
-        <b-button
-          class="d-flex align-items-center"
-          variant="success"
-          @click="confirm(belts)"
-        >
-          <check-icon size="1.5x" class="custom-class"></check-icon>
-          <span style="">{{ $t("buttons.confirm") }}</span>
-        </b-button>
-      </div> -->
     </b-card-code>
   </b-col>
 </template>
@@ -153,13 +114,6 @@ export default {
     };
   },
   methods: {
-    // confirm(data) {
-    //   this.disabledRepeate = true;
-    //   this.$store.commit(
-    //     `${this.module}/belts`,
-    //     data[0].belt ? { data, confirm: true } : { data: [], confirm: true }
-    //   );
-    // },
     repeat() {
       this.belts = [...this.belts, { belt: null, date: null }];
     },
@@ -196,7 +150,6 @@ export default {
       handler(newValue, oldValue) {
         let belts = JSON.parse(JSON.stringify(newValue));
         this.$store.commit(`${this.module}/belts`, belts);
-        // this.$store.commit(`${this.module}/belts`, newValue);
       },
       deep: true,
     },

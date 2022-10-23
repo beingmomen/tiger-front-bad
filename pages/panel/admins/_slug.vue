@@ -1,16 +1,20 @@
 <template>
   <SettingsLayout :title="$t('sidebar.admins')" :breadcrumbs="breadcrumbs">
     <template #content>
-      <ActionsUpdate title="admin" :module="module" :id="id">
+      <ActionsUpdate :title="$t('cards.admin')" :module="module" :id="id">
         <template #update>
-          <FormInputIcon label="Name" storeKey="name" :module="module">
+          <FormInputIcon
+            :label="$t('inputs.name')"
+            storeKey="name"
+            :module="module"
+          >
             <template #icon>
               <user-icon size="1.5x" class="custom-class"></user-icon>
             </template>
           </FormInputIcon>
 
           <FormInputIcon
-            label="Email"
+            :label="$t('inputs.email')"
             storeKey="email"
             type="email"
             :module="module"

@@ -1,6 +1,6 @@
 {
   "login": {
-      "welcome": "Welcome to Vuexy!",
+      "welcome": "Welcome to",
       "please": "Please sign-in to your account and start the adventure",
       "admin": "Admin",
       "client": "Client",
@@ -9,16 +9,21 @@
       "new_account": "Create an account"
   },
   "register": {
-      "welcome": "Adventure starts here",
+      "welcome": "Adventure starts here 🚀",
       "please": "Make your app management easy and fun!",
       "signUp": "Sign Up",
       "already": "Already have an account ?",
-      "signIn": "Sign in instead",
-      "admin": "Admin",
-      "client": "Client",
-      "tooltip": "This is just for ACL demo purpose",
-      "new_platform": "New on our platform?",
-      "new_account": "Create an account"
+      "signIn": "Sign in instead"
+  },
+  "forgetPass": {
+      "welcome": "Forgot Password? 🔒",
+      "please": "Enter your email and we'll send you instructions to reset your password",
+      "back": " Back to login"
+  },
+  "resetPass": {
+      "welcome": "Reset Password 🔒",
+      "please": "Your new password must be different from previously used passwords",
+      "back": " Back to login"
   },
   "sidebar": {
       "dashboard": "Dashboard",
@@ -51,6 +56,8 @@
   "inputs": {
       "email": "ُEmail",
       "password": "Password",
+      "passwordConfirm": "Confirm Password",
+      "passwordCurrent": "Current Password",
       "forget": "Forgot Password?",
       "search": "Search",
       "searchPlaceholder": "Type to Search",
@@ -60,6 +67,8 @@
       "phone": "Phone",
       "status": "Status",
       "time": "Time",
+      "country": "Country",
+      "selectPlaceholder": "Select Item",
       "filePlaceholder": "Choose a file or drop it here...",
       "message": "Message"
   },
@@ -78,9 +87,12 @@
       "delete": "Delete",
       "create": "Create",
       "reset": "Reset",
+      "forgetPass": "Send reset link",
+      "resetPass": "Set New Password",
       "update": "Update",
       "confirm": "Confirm",
       "addBelt": "Add Belt",
+      "admin": "admin",
       "no": "No"
   },
   "tables": {
@@ -88,6 +100,8 @@
       "name": "Name",
       "phone": "Phone",
       "address": "Address",
+      "photo": "Photo",
+      "country": "Country",
       "email": "Email",
       "status": "Status",
       "message": "Message",
@@ -106,6 +120,13 @@
       "create": "Create",
       "update": "Update",
       "beltsTimeLine": "Belts Timeline",
+      "username": "Username",
+      "status": "Status",
+      "role": "Role",
+      "country": "Country",
+      "contact": "Phone",
+      "changePhone": "Change Photo",
+      "admin": "admin",
       "dis_active": "Dis Active"
   }
 }
