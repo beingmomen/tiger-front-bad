@@ -15,7 +15,7 @@
     <template v-if="userData">
       <!-- First Row -->
       <b-row>
-        <b-col cols="12" xl="9" lg="8" md="7">
+        <b-col cols="12">
           <PanelProfileInfo />
         </b-col>
       </b-row>

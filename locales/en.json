@@ -8,6 +8,18 @@
       "new_platform": "New on our platform?",
       "new_account": "Create an account"
   },
+  "register": {
+      "welcome": "Adventure starts here",
+      "please": "Make your app management easy and fun!",
+      "signUp": "Sign Up",
+      "already": "Already have an account ?",
+      "signIn": "Sign in instead",
+      "admin": "Admin",
+      "client": "Client",
+      "tooltip": "This is just for ACL demo purpose",
+      "new_platform": "New on our platform?",
+      "new_account": "Create an account"
+  },
   "sidebar": {
       "dashboard": "Dashboard",
       "settings": "settings",
@@ -57,7 +69,7 @@
   },
   "buttons": {
       "login": "Sign in",
-      "logout": "Sign Up",
+      "signUp": "Sign Up",
       "add": "Add",
       "edit": "Edit",
       "clear": "Clear",

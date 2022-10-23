@@ -3,14 +3,14 @@
     <b-row>
       <!-- User Info: Left col -->
       <b-col
-        cols="21"
+        cols="12"
         xl="6"
         class="d-flex justify-content-between flex-column"
       >
         <!-- User Avatar & Action Buttons -->
         <div class="d-flex justify-content-start">
           <b-avatar
-            src=""
+            :src="url"
             text="tgegjid dgfgdhj"
             :variant="`light-green`"
             size="104px"
@@ -18,42 +18,20 @@
           />
           <div class="d-flex flex-column ml-1">
             <div class="mb-1">
-              <h4 class="mb-0">fullName</h4>
-              <span class="card-text">email</span>
+              <h4 class="mb-0">{{ $auth.user.name }}</h4>
+              <span class="card-text">{{ $auth.user.email }}</span>
             </div>
             <div class="d-flex flex-wrap">
-              <b-button
-                :to="{ name: 'apps-users-edit', params: { id: 2 } }"
-                variant="primary"
-              >
-                Edit
+              <b-button variant="primary" @click="$refs.refInputEl.click()">
+                <input
+                  ref="refInputEl"
+                  type="file"
+                  class="d-none"
+                  @input="inputImageRenderer"
+                />
+                <span class="d-none d-sm-inline">Update</span>
+                <feather-icon icon="EditIcon" class="d-inline d-sm-none" />
               </b-button>
-              <b-button variant="outline-danger" class="ml-1">
-                Delete
-              </b-button>
-            </div>
-          </div>
-        </div>
-
-        <!-- User Stats -->
-        <div class="d-flex align-items-center mt-2">
-          <div class="d-flex align-items-center mr-2">
-            <b-avatar variant="light-primary" rounded>
-              <feather-icon icon="DollarSignIcon" size="18" />
-            </b-avatar>
-            <div class="ml-1">
-              <h5 class="mb-0">23.3k</h5>
-              <small>Monthly Sales</small>
-            </div>
-          </div>
-
-          <div class="d-flex align-items-center">
-            <b-avatar variant="light-success" rounded>
-              <feather-icon icon="TrendingUpIcon" size="18" />
-            </b-avatar>
-            <div class="ml-1">
-              <h5 class="mb-0">$99.87k</h5>
-              <small>Annual Profit</small>
             </div>
           </div>
         </div>
@@ -64,35 +42,28 @@
         <table class="mt-2 mt-xl-0 w-100">
           <tr>
             <th class="pb-50">
-              <feather-icon icon="UserIcon" class="mr-75" />
+              <user-icon size="1.5x" class="custom-class mr-75"></user-icon>
               <span class="font-weight-bold">Username</span>
             </th>
-            <td class="pb-50">username</td>
+            <td class="pb-50">{{ $auth.user.slug }}</td>
           </tr>
           <tr>
             <th class="pb-50">
-              <feather-icon icon="CheckIcon" class="mr-75" />
-              <span class="font-weight-bold">Status</span>
-            </th>
-            <td class="pb-50 text-capitalize">status</td>
-          </tr>
-          <tr>
-            <th class="pb-50">
-              <feather-icon icon="StarIcon" class="mr-75" />
+              <star-icon size="1.5x" class="custom-class mr-75"></star-icon>
               <span class="font-weight-bold">Role</span>
             </th>
-            <td class="pb-50 text-capitalize">role</td>
+            <td class="pb-50 text-capitalize">{{ $auth.user.role }}</td>
           </tr>
           <tr>
             <th class="pb-50">
-              <feather-icon icon="FlagIcon" class="mr-75" />
+              <flag-icon size="1.5x" class="custom-class mr-75"></flag-icon>
               <span class="font-weight-bold">Country</span>
             </th>
             <td class="pb-50">country</td>
           </tr>
           <tr>
             <th>
-              <feather-icon icon="PhoneIcon" class="mr-75" />
+              <phone-icon size="1.5x" class="custom-class mr-75"></phone-icon>
               <span class="font-weight-bold">Contact</span>
             </th>
             <td>contact</td>
@@ -104,7 +75,38 @@
 </template>
 
 <script>
-export default {};
+import {
+  UserIcon,
+  StarIcon,
+  FlagIcon,
+  PhoneIcon,
+  XIcon,
+  HomeIcon,
+  UsersIcon,
+  ShoppingCartIcon,
+  ActivityIcon,
+  UserCheckIcon,
+} from "vue-feather-icons";
+export default {
+  computed: {
+    url() {
+      let url = `${this.$config.NODE_URL_images}/users/${this.$auth.user.photo}`;
+      return url;
+    },
+  },
+  components: {
+    UserIcon,
+    StarIcon,
+    FlagIcon,
+    PhoneIcon,
+    XIcon,
+    HomeIcon,
+    UsersIcon,
+    ShoppingCartIcon,
+    ActivityIcon,
+    UserCheckIcon,
+  },
+};
 </script>
 
 <style lang="scss" scoped>

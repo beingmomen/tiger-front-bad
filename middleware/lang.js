@@ -1,6 +1,6 @@
 export default async function ({ app, store }) {
   const cookieRes = await app.$cookies.get("i18n_redirected");
-  console.warn("cookieRes", cookieRes);
+  // console.warn("cookieRes", cookieRes);
   if (cookieRes == "ar") {
     app.head.htmlAttrs.class = "arabic-dir";
     app.head.htmlAttrs.dir = "rtl";

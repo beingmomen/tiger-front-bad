@@ -8,6 +8,18 @@
       "new_platform": "هل أنت جديد على منصتنا ؟",
       "new_account": "أنشئ حساب جديد"
   },
+  "register": {
+    "welcome": "مغامرتك تبدأ من هنا",
+    "please": "اجعل إدارة تطبيقك سهلة وممتعة!",
+    "signUp": "سجل معنا",
+    "already": "هل لديك حساب ؟",
+    "signIn": "سجل الدخول بدل من ذلك",
+    "admin": "Admin",
+    "client": "Client",
+    "tooltip": "This is just for ACL demo purpose",
+    "new_platform": "New on our platform?",
+    "new_account": "Create an account"
+},
   "sidebar": {
       "dashboard": "لوحة التحكم",
       "apps": "التطبيقات",

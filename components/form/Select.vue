@@ -12,7 +12,7 @@
           <slot name="icon"></slot>
         </b-input-group-prepend>
         <v-select
-          class="h-35 w-87"
+          class="h-35 w-87 v-select-custom"
           v-model="getContent"
           :reduce="(item) => (notId ? item : item.id)"
           :label="labelSelect"
@@ -23,7 +23,15 @@
           :disabled="disabled"
           :placeholder="placeHolder"
           @input="changeData"
-        ></v-select>
+        >
+          <template v-if="img" #option="{ name, flag }">
+            <img
+              style="width: 21px; height: 21px; margin-inline-end: 15.4px"
+              :src="flag"
+            />
+            <span> {{ name }}</span>
+          </template>
+        </v-select>
       </b-input-group>
     </b-form-group>
   </b-col>
@@ -47,6 +55,10 @@ export default {
     placeHolder: {
       type: String,
       default: "Select",
+    },
+    img: {
+      type: Boolean,
+      default: false,
     },
     multiple: {
       type: Boolean,

@@ -2,9 +2,14 @@
   <b-col :lg="lg" :md="md" :sm="sm" class="mb-1 custom-form">
     <b-form-group
       :label-class="{ 'label-required': required }"
-      :label="label"
       label-for="vi-first-name"
     >
+      <div class="d-flex justify-content-between">
+        <label class="mb-1">{{ $t("inputs.password") }}</label>
+        <nuxt-link v-if="forget" to="/auth/forgot-password">
+          <small>{{ $t("inputs.forget") }}</small>
+        </nuxt-link>
+      </div>
       <b-input-group
         class="input-group-merge"
         :class="
@@ -21,9 +26,14 @@
           :placeholder="label"
           v-model="getContent"
           :disabled="disabled"
-          :type="type"
+          :type="passwordFieldType"
         />
-        <slot name="pass"></slot>
+        <b-input-group-append is-text>
+          <MainEyeIcon
+            :visibility="passwordFieldType"
+            @click.native="togglePasswordVisibility"
+          />
+        </b-input-group-append>
       </b-input-group>
     </b-form-group>
   </b-col>
@@ -36,6 +46,10 @@ export default {
     module: String,
     storeKey: String,
     required: {
+      type: Boolean,
+      default: false,
+    },
+    forget: {
       type: Boolean,
       default: false,
     },

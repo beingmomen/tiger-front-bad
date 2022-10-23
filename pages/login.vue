@@ -1,170 +1,59 @@
 <template>
-  <div class="auth-wrapper auth-v2">
-    <b-row class="auth-inner m-0">
-      <!-- Brand logo-->
-      <b-link class="brand-logo">
-        <MainLogo />
-        <MainTitle />
-      </b-link>
-      <!-- /Brand logo-->
+  <ActionsAuth
+    :img="img"
+    :welcome="$t('login.welcome')"
+    :please="$t('login.please')"
+    :first="$t('login.new_platform')"
+    :second="$t('login.new_account')"
+    :btn="$t('buttons.login')"
+    :module="module"
+    url="/auth/register"
+  >
+    <template #auth>
+      <FormInputIcon
+        label="Email"
+        storeKey="email"
+        type="email"
+        :module="module"
+        lg="12"
+        md="12"
+      >
+        <template #icon>
+          <mail-icon size="1.5x" class="custom-class"></mail-icon>
+        </template>
+      </FormInputIcon>
 
-      <!-- Left Text-->
-      <b-col lg="8" class="d-none d-lg-flex align-items-center p-5">
-        <div
-          class="w-100 d-lg-flex align-items-center justify-content-center px-5"
-        >
-          <b-img
-            fluid
-            :src="require('~/assets/images/pages/login-v2.svg')"
-            alt="Login V2"
-          />
-        </div>
-      </b-col>
-      <!-- /Left Text-->
-
-      <!-- Login-->
-      <b-col lg="4" class="d-flex align-items-center auth-bg px-2 p-lg-5">
-        <b-col sm="8" md="6" lg="12" class="px-xl-2 mx-auto">
-          <b-card-title class="mb-1 font-weight-bold" title-tag="h2">
-            {{ $t("login.welcome") }} 👋
-          </b-card-title>
-          <b-card-text class="mb-2">
-            {{ $t("login.please") }}
-          </b-card-text>
-
-          <!-- form -->
-          <ValidationObserver v-slot="{ handleSubmit, invalid }">
-            <b-form
-              class="auth-login-form mt-2"
-              @submit.prevent="handleSubmit(onSubmit)"
-            >
-              <!-- email -->
-              <ValidationProvider
-                rules="required|email"
-                v-slot="{ errors, classes }"
-              >
-                <b-form-group
-                  :label="$t('inputs.email')"
-                  label-for="login-email"
-                  :class="classes"
-                >
-                  <b-form-input
-                    id="login-email"
-                    v-model="login.email"
-                    :state="errors.length > 0 ? false : null"
-                    :class="classes"
-                    autocomplete="off"
-                    name="Email"
-                    placeholder="john@example.com"
-                  />
-                  <small class="text-danger">{{ errors[0] }}</small>
-                </b-form-group>
-              </ValidationProvider>
-
-              <!-- forgot password -->
-              <ValidationProvider rules="required" v-slot="{ errors, classes }">
-                <b-form-group :class="classes">
-                  <div class="d-flex justify-content-between">
-                    <label for="login-password">{{
-                      $t("inputs.password")
-                    }}</label>
-                    <nuxt-link to="/auth/forgot-password">
-                      <small>{{ $t("inputs.forget") }}</small>
-                    </nuxt-link>
-                  </div>
-                  <b-input-group
-                    class="input-group-merge"
-                    :class="errors.length > 0 ? 'is-invalid' : null"
-                  >
-                    <b-form-input
-                      id="login-password"
-                      v-model="login.password"
-                      :state="errors.length > 0 ? false : null"
-                      class="form-control-merge"
-                      :type="passwordFieldType"
-                      autocomplete="off"
-                      name="login-password"
-                      placeholder="Password"
-                    />
-                    <b-input-group-append is-text>
-                      <MainEyeIcon
-                        :visibility="passwordFieldType"
-                        @click.native="togglePasswordVisibility"
-                      />
-                    </b-input-group-append>
-                  </b-input-group>
-                  <small class="text-danger">{{ errors[0] }}</small>
-                </b-form-group>
-              </ValidationProvider>
-
-              <!-- submit buttons -->
-              <b-button
-                type="submit"
-                class="mt-3"
-                variant="primary"
-                :disabled="invalid"
-                block
-              >
-                {{ $t("buttons.login") }}
-              </b-button>
-            </b-form>
-          </ValidationObserver>
-
-          <b-card-text class="text-center mt-3">
-            <span>{{ $t("login.new_platform") }} </span>
-            <nuxt-link to="/auth/register">
-              <span>{{ $t("login.new_account") }}</span>
-            </nuxt-link>
-          </b-card-text>
-        </b-col>
-      </b-col>
-    </b-row>
-  </div>
+      <FormPasswordInput
+        label="Password"
+        storeKey="password"
+        :module="module"
+        lg="12"
+        md="12"
+      >
+        <template #icon>
+          <lock-icon size="1.5x" class="custom-class"></lock-icon>
+        </template>
+      </FormPasswordInput>
+    </template>
+  </ActionsAuth>
 </template>
 
 <script>
-import { HelpCircleIcon, EyeIcon, CoffeeIcon } from "vue-feather-icons";
+import { MailIcon, LockIcon } from "vue-feather-icons";
 
 export default {
   name: "login",
   layout: "auth",
-  mounted() {
-    // this.$axios.$get("/players").then((res) => {
-    //   console.warn("players", res);
-    // });
-  },
   data() {
     return {
-      login: {
-        email: "abdelmomenelshatory@gmail.com",
-        password: "password",
-      },
+      module: "authentication/login",
+      img: "login-v2.svg",
+      btnDisabled: false,
     };
   },
-  methods: {
-    async onSubmit() {
-      try {
-        let res = await this.$auth.loginWith("local", {
-          data: this.login,
-        });
-
-        let position = this.$i18n.locale == "en" ? "top-right" : "top-left";
-
-        this.$toast(`Welcome ${this.$auth.user.name}`, {
-          timeout: 3000,
-          hideProgressBar: true,
-          position,
-          icon: CoffeeIcon,
-          closeOnClick: false,
-          showCloseButtonOnHover: true,
-        });
-      } catch (err) {}
-    },
-  },
   components: {
-    HelpCircleIcon,
-    EyeIcon,
-    CoffeeIcon,
+    MailIcon,
+    LockIcon,
   },
 };
 </script>
