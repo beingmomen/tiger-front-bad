@@ -2,6 +2,7 @@ export const state = () => ({
   layoutCollapsed: true,
   sidebar: false,
   mode: true,
+  logoWidth: true,
   dashDir: "ltr",
 });
 
@@ -14,6 +15,9 @@ export const getters = {
   },
   getMode(state) {
     return state.mode;
+  },
+  getLogoWidth(state) {
+    return state.logoWidth;
   },
   getDashDir(state) {
     return state.dashDir;
@@ -43,6 +47,10 @@ export const actions = {
   },
   showSuccessMsg({}, payload) {
     this.$toast.success(payload);
+  },
+  logoWidth({ state, commit }, payload) {
+    const width = state.logoWidth ? false : true;
+    commit("setLogoWidth", width);
   },
   handleFormData({}, payload) {
     let formData = new FormData();
@@ -96,6 +104,9 @@ export const mutations = {
   },
   setMode(state, val) {
     state.mode = val;
+  },
+  setLogoWidth(state, val) {
+    state.logoWidth = val;
   },
   setDashDir(state, val) {
     state.dashDir = val;

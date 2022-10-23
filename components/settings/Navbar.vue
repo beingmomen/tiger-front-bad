@@ -183,6 +183,7 @@ export default {
   methods: {
     toggleLayoutCollapsed() {
       this.$store.dispatch("toggleLayoutCollapsed", this.width);
+      this.$store.dispatch("logoWidth");
     },
     toggleMode(mode) {
       this.$store.dispatch("layoutMode", mode);

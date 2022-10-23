@@ -15,10 +15,13 @@
             :to="localePath('/panel')"
             class="navbar-brand router-link-active mt-0"
           >
-            <span class="brand-logo" style="width: 60px">
-              <MainLogo class="mw-100" />
+            <span :class="logoWidth ? 'brand-logo' : 'brand-logo-small'">
+              <MainLogo
+                :style="{ width: logoWidth ? '210px' : '67px' }"
+                class="mw-100 logo-img"
+              />
             </span>
-            <MainTitle />
+            <!-- <MainTitle /> -->
           </nuxt-link>
         </li>
         <li class="nav-item nav-toggle me-3">
@@ -126,6 +129,9 @@ export default {
       ];
       return arr;
     },
+    logoWidth() {
+      return this.$store.getters["getLogoWidth"];
+    },
   },
   components: {
     XIcon,
@@ -143,6 +149,10 @@ export default {
     hoverSidebar() {
       if (this.width > 1200) {
         this.hover = this.hover ? false : true;
+
+        if (!this.makeLayoutCollapsed) {
+          this.$store.dispatch("logoWidth");
+        }
       }
     },
   },
@@ -150,4 +160,16 @@ export default {
 </script>
 
 <style lang="scss">
+.brand-logo {
+  margin-top: -40px;
+}
+
+.brand-logo-small {
+  margin-top: 20px;
+  margin-left: -6px;
+}
+
+.logo-img {
+  transition: all 0.35s ease-in-out;
+}
 </style>

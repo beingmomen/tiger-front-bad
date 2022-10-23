@@ -27,6 +27,7 @@
         label="Password"
         storeKey="password"
         :module="module"
+        :forget="true"
         lg="12"
         md="12"
       >
