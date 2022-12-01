@@ -143,8 +143,9 @@ export default {
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
     // proxy: true,
-    baseURL: "http://127.0.0.1:1234/api/v1",
+    // baseURL: "http://127.0.0.1:1234/api/v1",
     // baseURL: "https://api.techmagic.online/api/v1",
+     baseURL: "https://academyapi.onrender.com/api/v1",
   },
 
   proxy: { "/api/": "https://179.61.246.119:1234/api/v1" },
@@ -183,8 +184,9 @@ export default {
   build: {},
   publicRuntimeConfig: {
     SITE_TITLE: "Soft Magic",
-    NODE_URL_images: "http://127.0.0.1:1234/images",
+    // NODE_URL_images: "http://127.0.0.1:1234/images",
     // NODE_URL_images: "https://api.techmagic.online/images",
+    NODE_URL_images: "https://academyapi.onrender.com/images",
   },
 };
 // http://179.61.246.119:1234/api/v1/players
