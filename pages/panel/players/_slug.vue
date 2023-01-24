@@ -168,7 +168,7 @@ export default {
         },
       })
       .then((res) => {
-        store.dispatch("global/getChampionshipsFromApi", res.data.data);
+        store.dispatch("global/getChampionshipsFromApi", res.data.data); 
       });
     return {
       id,

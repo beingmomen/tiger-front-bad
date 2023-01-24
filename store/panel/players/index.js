@@ -119,7 +119,7 @@ export const actions = {
       key: "championships",
       value: payload.championships,
     });
-    commit("activity", { key: "activity", value: payload.activity._id });
+    commit("activity", { key: "activity", value: payload.activity._id }); 
     commit("setBelts", payload.belts);
     // commit("belts", { data: payload.belts, change: false });
     commit("belts", payload.belts);

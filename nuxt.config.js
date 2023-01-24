@@ -1,7 +1,7 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: "Golden Tiger Academy",
+    title: "Golden Tiger Academy rrrrrrrrrrrrr",
     htmlAttrs: {
       lang: "en",
       dir: "ltr",
