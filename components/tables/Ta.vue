@@ -151,11 +151,8 @@
         </div>
       </b-card-body>
     </div>
-    <div
-      v-else
-      class="card align-items-center justify-content-center"
-      style="height: calc(100vh - 260px)"
-    >
+    <div v-else class="card align-items-center justify-content-center">
+      <!-- style="height: calc(100vh - 260px)" -->
       <lottie-player
         src="https://assets9.lottiefiles.com/packages/lf20_gvpcpv48.json"
         class="lottie-container"
